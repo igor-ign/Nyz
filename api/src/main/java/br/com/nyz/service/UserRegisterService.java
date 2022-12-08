@@ -6,6 +6,7 @@ import br.com.nyz.domain.User;
 import br.com.nyz.mapper.UserMapper;
 import br.com.nyz.mapper.UserRegisterMapper;
 import br.com.nyz.repository.UserRepository;
+import br.com.nyz.validator.UserRegisterValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -25,6 +26,8 @@ public class UserRegisterService {
         if (Objects.isNull(newUser)) {
             throw new ResponseStatusException(UNPROCESSABLE_ENTITY, USER_REGISTER_ERROR_MESSAGE);
         }
+
+        UserRegisterValidator.validate(newUser);
 
         User user = UserRegisterMapper.toEntity(newUser);
 
