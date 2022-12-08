@@ -23,6 +23,9 @@ public class UserRegisterService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private UserRegisterValidator userRegisterValidator;
         private static final String USER_REGISTER_ERROR_MESSAGE = "Review all the informations provided and try to add the user again.";
 
     public UserRegisterService(PasswordEncoder encoder) {
@@ -34,7 +37,7 @@ public class UserRegisterService {
             throw new ResponseStatusException(UNPROCESSABLE_ENTITY, USER_REGISTER_ERROR_MESSAGE);
         }
 
-        UserRegisterValidator.validate(request);
+        userRegisterValidator.validate(request);
 
         User newUser = UserRegisterMapper.toEntity(request);
         newUser.setPassword(encoder.encode(newUser.getPassword()));
