@@ -1,5 +1,7 @@
-# nyz
+# Nyz
 
+## What is Nyz?
+Nyz is a blogging platform where you can share content about anything that you think its interesting to share with other people in the community.
 
 ## Dependencies
 <ul>
