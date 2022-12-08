@@ -8,6 +8,7 @@ import br.com.nyz.mapper.UserRegisterMapper;
 import br.com.nyz.repository.UserRepository;
 import br.com.nyz.validator.UserRegisterValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -18,22 +19,29 @@ import static org.springframework.http.HttpStatus.UNPROCESSABLE_ENTITY;
 @Service
 public class UserRegisterService {
 
+    private final PasswordEncoder encoder;
+
     @Autowired
     private UserRepository userRepository;
         private static final String USER_REGISTER_ERROR_MESSAGE = "Review all the informations provided and try to add the user again.";
 
-    public UserResponse register(AddUserRequest newUser) {
-        if (Objects.isNull(newUser)) {
+    public UserRegisterService(PasswordEncoder encoder) {
+        this.encoder = encoder;
+    }
+
+    public UserResponse register(AddUserRequest request) {
+        if (Objects.isNull(request)) {
             throw new ResponseStatusException(UNPROCESSABLE_ENTITY, USER_REGISTER_ERROR_MESSAGE);
         }
 
-        UserRegisterValidator.validate(newUser);
+        UserRegisterValidator.validate(request);
 
-        User user = UserRegisterMapper.toEntity(newUser);
+        User newUser = UserRegisterMapper.toEntity(request);
+        newUser.setPassword(encoder.encode(newUser.getPassword()));
 
-        userRepository.save(user);
+        userRepository.save(newUser);
 
-        UserResponse response = UserMapper.toResponse(user);
+        UserResponse response = UserMapper.toResponse(newUser);
 
         return response;
 

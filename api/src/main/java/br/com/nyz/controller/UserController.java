@@ -12,18 +12,11 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
-
-    private final PasswordEncoder encoder;
-
     @Autowired
     private UserService userService;
 
     @Autowired
     private UserRegisterService userRegisterService;
-
-    public UserController(PasswordEncoder encoder) {
-        this.encoder = encoder;
-    }
 
     @GetMapping
     public UserResponse listUser(@RequestBody DetailedUserRequest request) {
@@ -32,7 +25,6 @@ public class UserController {
 
     @PostMapping("/register")
     public UserResponse addNewUser(@RequestBody AddUserRequest newUser) {
-        newUser.setPassword(encoder.encode(newUser.getPassword()));
         return userRegisterService.register(newUser);
     }
 }
