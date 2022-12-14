@@ -1,0 +1,1 @@
+export { API_PATH } from './apiPath'

@@ -1,0 +1,5 @@
+.login__container {
+    background-image: linear-gradient(to right, var(--primary) , var(--secundary));
+    width: 100vw;
+    height: 100vh;
+}
