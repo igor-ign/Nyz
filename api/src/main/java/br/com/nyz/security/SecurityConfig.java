@@ -26,6 +26,7 @@ public class SecurityConfig {
                 .antMatchers("/*/**/public").permitAll()
                 .antMatchers("*").permitAll()
                 .antMatchers(POST, "/api/user/register").permitAll()
+                .antMatchers(POST, "/api/user/login").permitAll()
                 .antMatchers(GET, "/api/user").permitAll()
                 .and()
                 .authorizeRequests()

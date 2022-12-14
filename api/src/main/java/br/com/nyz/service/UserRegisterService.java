@@ -1,6 +1,6 @@
 package br.com.nyz.service;
 
-import br.com.nyz.controller.request.AddUserRequest;
+import br.com.nyz.controller.request.UserRegisterRequest;
 import br.com.nyz.controller.response.UserResponse;
 import br.com.nyz.domain.User;
 import br.com.nyz.mapper.UserMapper;
@@ -18,6 +18,7 @@ import static org.springframework.http.HttpStatus.UNPROCESSABLE_ENTITY;
 
 @Service
 public class UserRegisterService {
+    private static final String USER_REGISTER_ERROR_MESSAGE = "Review all the informations provided and try to register the user again.";
 
     private final PasswordEncoder encoder;
 
@@ -26,13 +27,12 @@ public class UserRegisterService {
 
     @Autowired
     private UserRegisterValidator userRegisterValidator;
-        private static final String USER_REGISTER_ERROR_MESSAGE = "Review all the informations provided and try to add the user again.";
 
     public UserRegisterService(PasswordEncoder encoder) {
         this.encoder = encoder;
     }
 
-    public UserResponse register(AddUserRequest request) {
+    public UserResponse register(UserRegisterRequest request) {
         if (Objects.isNull(request)) {
             throw new ResponseStatusException(UNPROCESSABLE_ENTITY, USER_REGISTER_ERROR_MESSAGE);
         }

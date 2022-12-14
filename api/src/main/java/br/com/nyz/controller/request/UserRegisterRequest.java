@@ -12,7 +12,7 @@ import javax.validation.constraints.NotBlank;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class AddUserRequest {
+public class UserRegisterRequest {
 
     @NotBlank(message = "Name can't be null.")
     private String name;

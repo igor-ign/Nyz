@@ -1,6 +1,6 @@
 package br.com.nyz.validator;
 
-import br.com.nyz.controller.request.AddUserRequest;
+import br.com.nyz.controller.request.UserRegisterRequest;
 import br.com.nyz.domain.User;
 import br.com.nyz.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ public class UserRegisterValidator {
     @Autowired
     private UserRepository userRepository;
 
-    public void validate(AddUserRequest newUser) {
+    public void validate(UserRegisterRequest newUser) {
         String name = newUser.getName();
         String email = newUser.getEmail();
         String password = newUser.getPassword();
