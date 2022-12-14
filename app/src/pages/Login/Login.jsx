@@ -18,11 +18,16 @@ export function Login() {
   async function handleLogin(e) {
     e.preventDefault();
 
-    //TODO : error toast if any field is null
-
-    const params = { email: email, password: password };
-    const response = await login(params);
-    //TODO : sucess toast after login
+    if (!email || !password) {
+      //TODO : error toast if any field is null
+    } else {
+      try {
+        const params = { email: email, password: password };
+        const response = await login(params);
+      } catch {
+        //TODO: error toast if invalid credentials
+      }
+    }
   }
 
   return (
@@ -35,24 +40,27 @@ export function Login() {
             <h3 className="input__title">E-mail</h3>
             <input
               type="text"
-              placeholder="Type your e-mail here"
+              placeholder="Ex: roger@hotmail.com"
               id="email"
               onChange={handleInputChange}
+              className="form__input"
             />
           </span>
 
           <span className="form__label">
-            <h3 className="input__title">Password</h3>
+            <h3 className="input__title password">Password</h3>
             <input
               type="password"
               placeholder="Type your password here"
               id="password"
               onChange={handleInputChange}
+              className="form__input"
             />
           </span>
         </div>
 
-        <button className="form__button">Continue</button>
+        <button className="form__button">Login</button>
+        {/* TODO: Add link to the register page*/}
       </form>
     </div>
   );
