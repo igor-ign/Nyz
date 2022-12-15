@@ -1,1 +1,1 @@
-export { API_PATH } from './apiPath'
+export { API_PATH } from "./apiPath";
