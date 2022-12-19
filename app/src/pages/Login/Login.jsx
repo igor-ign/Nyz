@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FormInput } from "../../components";
 import { useUser } from "../../hooks/api/useUser.hook";
 import "./Login.css";

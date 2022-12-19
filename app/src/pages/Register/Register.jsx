@@ -69,7 +69,7 @@ export function Register() {
           />
         </div>
 
-        <button className="form__button"> Register</button>
+        <button className="form__button">Register</button>
       </form>
     </div>
   );
