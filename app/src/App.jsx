@@ -1,7 +1,9 @@
 import "./index.css";
 
 import { Routes, Route } from "react-router-dom";
+
 import { Login, Register, Home } from "./pages";
+
 import { WEBSITE_PATHS } from "./constants";
 
 function AppRoutes() {

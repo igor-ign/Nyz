@@ -1,5 +1,6 @@
-import { Header } from "../../components";
 import "./Home.css";
+
+import { Header } from "../../components";
 
 export function Home() {
   return (

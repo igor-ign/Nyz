@@ -1,8 +1,12 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { FormInput } from "../../components";
-import { useUser } from "../../hooks/api/useUser.hook";
 import "./Login.css";
+
+import { useState } from "react";
+
+import { Link } from "react-router-dom";
+
+import { FormInput } from "../../components";
+
+import { useUser } from "../../hooks/api/useUser.hook";
 
 export function Login() {
   const [params, setParams] = useState({});

@@ -1,10 +1,12 @@
 import "./Header.css";
 
+import { useState } from "react";
+
+import { MENU_STATES } from "../../constants";
+
 import NYZ_LOGO from "../../assets/nyz__logo.svg";
 import HAMBURGER from "../../assets/hamburger__icon.svg";
 import CLOSE_MENU from "../../assets/close__menu.svg";
-import { useState } from "react";
-import { MENU_STATES } from "../../constants";
 
 export function Header() {
   const [menuImage, setMenuImage] = useState(HAMBURGER);

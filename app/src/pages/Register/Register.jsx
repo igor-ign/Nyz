@@ -1,7 +1,10 @@
-import { useState } from "react";
-import { FormInput } from "../../components";
-import { useUser } from "../../hooks/api/useUser.hook";
 import "./Register.css";
+
+import { useState } from "react";
+
+import { FormInput } from "../../components";
+
+import { useUser } from "../../hooks/api/useUser.hook";
 
 export function Register() {
   const [params, setParams] = useState({});
