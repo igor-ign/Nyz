@@ -1,15 +1,20 @@
 import "./Register.css";
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { FormInput } from "../../components";
 
 import { useUser } from "../../hooks/api/useUser.hook";
 
+import { WEBSITE_PATHS } from "../../constants";
+
 export function Register() {
   const [params, setParams] = useState({});
 
   const { register } = useUser();
+
+  const navigate = useNavigate();
 
   function handleInputChange(e) {
     const { id, value } = e.target;
@@ -27,6 +32,7 @@ export function Register() {
     } else {
       try {
         await register(params);
+        navigate(WEBSITE_PATHS.HOME);
       } catch {
         // TODO: error toast
       }

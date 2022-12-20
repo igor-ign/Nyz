@@ -26,6 +26,7 @@ export function Header() {
       setMenuImage(HAMBURGER);
     }
   }
+
   return (
     <div className="header__container">
       <div className="header__content">

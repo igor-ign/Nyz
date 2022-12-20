@@ -2,16 +2,20 @@ import "./Login.css";
 
 import { useState } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { FormInput } from "../../components";
 
 import { useUser } from "../../hooks/api/useUser.hook";
 
+import { WEBSITE_PATHS } from "../../constants";
+
 export function Login() {
   const [params, setParams] = useState({});
 
   const { login } = useUser();
+
+  const navigate = useNavigate();
 
   function handleInputChange(e) {
     const { id, value } = e.target;
@@ -29,6 +33,7 @@ export function Login() {
     } else {
       try {
         await login(params);
+        navigate(WEBSITE_PATHS.HOME);
       } catch {
         //TODO: error toast if invalid credentials
       }
