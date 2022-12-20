@@ -28,6 +28,8 @@ public class SecurityConfig {
                 .antMatchers(POST, "/api/user/register").permitAll()
                 .antMatchers(POST, "/api/user/login").permitAll()
                 .antMatchers(GET, "/api/user").permitAll()
+                .antMatchers(GET, "/api/post").permitAll()
+                .antMatchers(POST, "/api/post/add").permitAll()
                 .and()
                 .authorizeRequests()
                 .anyRequest().authenticated()
