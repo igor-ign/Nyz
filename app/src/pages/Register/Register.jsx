@@ -1,7 +1,9 @@
 import "./Register.css";
+import "react-toastify/dist/ReactToastify.css";
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 import { FormInput } from "../../components";
 
@@ -9,7 +11,7 @@ import { useUser } from "../../hooks/api/useUser.hook";
 
 import { useGlobalUser } from "../../context";
 
-import { WEBSITE_PATHS } from "../../constants";
+import { REGISTER_ERROR, WEBSITE_PATHS } from "../../constants";
 
 export function Register() {
   const [, setGlobalUser] = useGlobalUser();
@@ -30,21 +32,18 @@ export function Register() {
   async function handleRegister(e) {
     e.preventDefault();
 
-    if (!params.name || !params.email || !params.password) {
-      // TODO: error toast
-    } else {
-      try {
-        const newUser = await register(params);
-        setGlobalUser(newUser);
-        navigate(WEBSITE_PATHS.HOME);
-      } catch {
-        // TODO: error toast
-      }
+    try {
+      const newUser = await register(params);
+      setGlobalUser(newUser);
+      navigate(WEBSITE_PATHS.HOME);
+    } catch {
+      toast.error(REGISTER_ERROR);
     }
   }
 
   return (
     <div className="register__container">
+      <ToastContainer autoClose={8000} />
       <form className="register__form" onSubmit={handleRegister}>
         <h1 className="form__title">Sign up</h1>
 

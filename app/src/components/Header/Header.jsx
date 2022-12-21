@@ -1,6 +1,8 @@
 import "./Header.css";
+import "react-toastify/dist/ReactToastify.css";
 
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 import { PostModal } from "../PostModal/PostModal";
 
@@ -42,12 +44,23 @@ export function Header() {
     setIsPostModalOpen(false);
   }
 
+  function handleOpenSucessToast(message) {
+    toast.success(message);
+  }
+
+  function handleOpenErrorToast(message) {
+    toast.error(message);
+  }
+
   return (
     <div className="header__container">
+      <ToastContainer autoClose={8000} />
       <PostModal
         isOpen={isPostModalOpen}
         handleClose={handleClosePostModal}
         user={globalUser}
+        sucessToast={handleOpenSucessToast}
+        errorToast={handleOpenErrorToast}
       />
 
       <div className="header__content">

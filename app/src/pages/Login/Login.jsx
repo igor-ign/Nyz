@@ -1,6 +1,8 @@
 import "./Login.css";
+import "react-toastify/dist/ReactToastify.css";
 
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 import { Link, useNavigate } from "react-router-dom";
 
@@ -10,7 +12,7 @@ import { useUser } from "../../hooks/api/useUser.hook";
 
 import { useGlobalUser } from "../../context";
 
-import { WEBSITE_PATHS } from "../../constants";
+import { LOGIN_ERROR, WEBSITE_PATHS } from "../../constants";
 
 export function Login() {
   const [, setGlobalUser] = useGlobalUser();
@@ -31,21 +33,19 @@ export function Login() {
   async function handleLogin(e) {
     e.preventDefault();
 
-    if (!params.email || !params.password) {
-      //TODO : error toast if any field is null
-    } else {
-      try {
-        const user = await login(params);
-        setGlobalUser(user);
-        navigate(WEBSITE_PATHS.HOME);
-      } catch {
-        //TODO: error toast if invalid credentials
-      }
+    try {
+      const user = await login(params);
+      setGlobalUser(user);
+      navigate(WEBSITE_PATHS.HOME);
+    } catch (e) {
+      console.error(e);
+      toast.error(LOGIN_ERROR);
     }
   }
 
   return (
     <div className="login__container">
+      <ToastContainer autoClose={8000} />
       <form className="login__form" onSubmit={handleLogin}>
         <h1 className="form__title">Sign in</h1>
 

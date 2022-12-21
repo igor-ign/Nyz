@@ -1,9 +1,18 @@
 import "./PostModal.css";
 
 import { useEffect, useState } from "react";
+
 import { usePost } from "../../hooks";
 
-export function PostModal({ isOpen, handleClose, user }) {
+import { ADD_POST } from "../../constants";
+
+export function PostModal({
+  isOpen,
+  handleClose,
+  user,
+  sucessToast,
+  errorToast,
+}) {
   const [authorId, setAuthorId] = useState();
   const [authorEmail, setAuthorEmail] = useState("");
   const [authorName, setAuthorName] = useState("");
@@ -26,13 +35,19 @@ export function PostModal({ isOpen, handleClose, user }) {
   async function handleAddPost(e) {
     e.preventDefault();
 
-    post.authorId = authorId;
-    post.authorEmail = authorEmail;
-    post.authorName = authorName;
-    post.authorPicture = authorPicture;
+    try {
+      post.authorId = authorId;
+      post.authorEmail = authorEmail;
+      post.authorName = authorName;
+      post.authorPicture = authorPicture;
 
-    const response = await addPost(post);
-    // TODO: Sucess toast
+      await addPost(post);
+      sucessToast(ADD_POST.SUCCESS);
+      handleClose();
+    } catch (e) {
+      errorToast(ADD_POST.ERROR);
+      handleClose();
+    }
   }
 
   function handlePostChange(e) {
