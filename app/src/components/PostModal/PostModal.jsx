@@ -13,35 +13,23 @@ export function PostModal({
   sucessToast,
   errorToast,
 }) {
-  const [authorId, setAuthorId] = useState();
-  const [authorEmail, setAuthorEmail] = useState("");
-  const [authorName, setAuthorName] = useState("");
-  const [authorPicture, setAuthorPicture] = useState("");
   const [post, setPost] = useState({});
 
   const { addPost } = usePost();
-
-  useEffect(() => {
-    getUserInfo();
-  }, []);
-
-  function getUserInfo() {
-    setAuthorId(user.id);
-    setAuthorEmail(user.email);
-    setAuthorName(user.name);
-    setAuthorPicture(user.profilePicture);
-  }
 
   async function handleAddPost(e) {
     e.preventDefault();
 
     try {
-      post.authorId = authorId;
-      post.authorEmail = authorEmail;
-      post.authorName = authorName;
-      post.authorPicture = authorPicture;
+      const params = {
+        authorId: user.id,
+        authorEmail: user.email,
+        authorName: user.name,
+        authorPicture: user.profilePicture,
+        ...post,
+      };
 
-      await addPost(post);
+      await addPost(params);
       sucessToast(ADD_POST.SUCCESS);
       handleClose();
     } catch (e) {
