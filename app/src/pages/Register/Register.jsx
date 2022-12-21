@@ -7,9 +7,12 @@ import { FormInput } from "../../components";
 
 import { useUser } from "../../hooks/api/useUser.hook";
 
+import { useGlobalUser } from "../../context";
+
 import { WEBSITE_PATHS } from "../../constants";
 
 export function Register() {
+  const [, setGlobalUser] = useGlobalUser();
   const [params, setParams] = useState({});
 
   const { register } = useUser();
@@ -31,7 +34,8 @@ export function Register() {
       // TODO: error toast
     } else {
       try {
-        await register(params);
+        const newUser = await register(params);
+        setGlobalUser(newUser);
         navigate(WEBSITE_PATHS.HOME);
       } catch {
         // TODO: error toast

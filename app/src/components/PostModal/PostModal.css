@@ -1,0 +1,96 @@
+.modal__container {
+    position: fixed;
+    background-color: var(--modal--background);
+    width: 100vw;
+    height: 100vh;
+    overflow-y: scroll;
+    z-index: 99999;
+}
+
+.true {
+    display: block;
+}
+
+.false {
+    display: none;
+}
+
+.modal__content {
+    background-color: var(--modal--background2);
+    width: 40em;
+    max-width: 90%;
+    margin: 5% auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: .3em;
+    padding: 1.4em;
+}
+
+.close__modal {
+    align-self: flex-end;
+    border: none;
+    background-color: var(--modal--button--background);
+    color: black;
+    width: 2em;
+    height: 2em;
+    border-radius: .3em;
+    font-size: 1.2rem;
+}
+
+textarea {
+    resize: none;
+    font-family: 'Inter', sans-serif;
+    border: .2em solid;
+    border-radius: .3em;
+    padding: .5em;
+    font-size: 1rem;
+}
+
+.post__form {
+    display: flex;
+    flex-direction: column;
+}
+
+.post__label, .post__input {
+    width: 100%;
+}
+
+.post__label {
+    margin-bottom: 1.3em;
+
+}
+
+.post__input {
+    margin-top: 1em;
+}
+
+.post__title {
+    font-size: 1.7rem;
+
+}
+
+.title {
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    font-size: 1rem;
+    outline: none;
+    padding-bottom: .3em;
+    font-family: 'Inter', sans-serif;
+
+}
+
+.post__button {
+    align-self: center;
+    width: 11em;
+    max-width: 100%;
+    height: 2.1em;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    background-color: var(--primary);
+    border: none;
+    border-radius: .3em;
+    cursor: pointer;
+
+}

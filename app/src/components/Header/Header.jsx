@@ -2,6 +2,10 @@ import "./Header.css";
 
 import { useState } from "react";
 
+import { PostModal } from "../PostModal/PostModal";
+
+import { useGlobalUser } from "../../context";
+
 import { MENU_STATES } from "../../constants";
 
 import NYZ_LOGO from "../../assets/nyz__logo.svg";
@@ -11,6 +15,9 @@ import CLOSE_MENU from "../../assets/close__menu.svg";
 export function Header() {
   const [menuImage, setMenuImage] = useState(HAMBURGER);
   const [menu, setMenu] = useState(MENU_STATES.CLOSED);
+  const [isPostModalOpen, setIsPostModalOpen] = useState(false);
+
+  const [globalUser] = useGlobalUser();
 
   function handleOpenMenu() {
     const isMenuClosed = menu === MENU_STATES.CLOSED;
@@ -27,15 +34,31 @@ export function Header() {
     }
   }
 
+  function handleOpenPostModal() {
+    setIsPostModalOpen(true);
+  }
+
+  function handleClosePostModal() {
+    setIsPostModalOpen(false);
+  }
+
   return (
     <div className="header__container">
+      <PostModal
+        isOpen={isPostModalOpen}
+        handleClose={handleClosePostModal}
+        user={globalUser}
+      />
+
       <div className="header__content">
         <img src={NYZ_LOGO} alt="Nyz logo" />
 
         <nav className={`nav ${menu}`}>
           <ul className="menu__container" type="none">
             <li className="menu__item">Home</li>
-            <li className="menu__item">Add Post</li>
+            <li className="menu__item" onClick={handleOpenPostModal}>
+              Add Post
+            </li>
             <li className="menu__item">Search</li>
             <li className="menu__item">Profile</li>
             <li className="menu__item">Logout</li>

@@ -8,9 +8,12 @@ import { FormInput } from "../../components";
 
 import { useUser } from "../../hooks/api/useUser.hook";
 
+import { useGlobalUser } from "../../context";
+
 import { WEBSITE_PATHS } from "../../constants";
 
 export function Login() {
+  const [, setGlobalUser] = useGlobalUser();
   const [params, setParams] = useState({});
 
   const { login } = useUser();
@@ -32,7 +35,8 @@ export function Login() {
       //TODO : error toast if any field is null
     } else {
       try {
-        await login(params);
+        const user = await login(params);
+        setGlobalUser(user);
         navigate(WEBSITE_PATHS.HOME);
       } catch {
         //TODO: error toast if invalid credentials
