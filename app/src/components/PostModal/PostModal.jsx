@@ -1,6 +1,6 @@
 import "./PostModal.css";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { usePost } from "../../hooks";
 
