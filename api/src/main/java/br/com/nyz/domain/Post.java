@@ -3,6 +3,7 @@ package br.com.nyz.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @Builder
@@ -18,6 +19,7 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer id;
 
+    @JoinColumn(name = "user")
     @Column(nullable = false)
     public Integer authorId;
 
@@ -37,4 +39,6 @@ public class Post {
 
     @Column(nullable = false)
     private String postContent;
+
+    // TODO : Add post date
 }
