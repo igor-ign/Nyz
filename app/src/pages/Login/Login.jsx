@@ -38,8 +38,12 @@ export function Login() {
       setGlobalUser(user);
       navigate(WEBSITE_PATHS.HOME);
     } catch (e) {
+      const errorBody = e.request.response;
+      const json = JSON.parse(errorBody);
+      const errorMessage = json.message;
+
       console.error(e);
-      toast.error(LOGIN_ERROR);
+      toast.error(errorMessage || LOGIN_ERROR);
     }
   }
 
