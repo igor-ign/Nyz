@@ -1,0 +1,36 @@
+.readmore__modal__container {
+    position: fixed;
+    background-color: var(--modal--background);
+    z-index: 99999;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.true {
+    display: block;
+}
+
+.false {
+    display: none;
+}
+
+.readmore__content {
+    background-color: var(--modal--background2);
+    width: 40em;
+    max-width: 90%;
+    margin: 5% auto;
+    padding: 1.4em;
+    border-radius: .3em;
+}
+
+.readmore__close {
+    text-align: right;
+    cursor: pointer;
+}
+
+.readmore__title {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}

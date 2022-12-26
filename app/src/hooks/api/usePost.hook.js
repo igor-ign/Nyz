@@ -9,8 +9,14 @@ export function usePost() {
         return apiResponse.data
     }
 
+    async function getPosts(params) {
+        const apiResponse = await axios.get(`${API_PATH.POST}/${params}`)
+
+        return apiResponse.data
+    }
+
     return {
-        addPost
+        addPost, getPosts
     }
   }
   

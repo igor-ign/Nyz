@@ -17,6 +17,8 @@ public class PostValidator {
     private static final String INVALID_USER_ID_MESSAGE = "This user don't exist in our database";
     private static final String INVALID_AUTHOR_NAME_MESSAGE = "Author name didn't match with Id";
 
+    // Todo : add post title and description min/max length
+
     @Autowired
     private UserRepository userRepository;
 
