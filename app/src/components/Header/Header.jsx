@@ -13,13 +13,15 @@ import { MENU_STATES } from "../../constants";
 import NYZ_LOGO from "../../assets/nyz__logo.svg";
 import HAMBURGER from "../../assets/hamburger__icon.svg";
 import CLOSE_MENU from "../../assets/close__menu.svg";
+import { useNavigate } from "react-router-dom";
 
 export function Header() {
   const [menuImage, setMenuImage] = useState(HAMBURGER);
   const [menu, setMenu] = useState(MENU_STATES.CLOSED);
   const [isPostModalOpen, setIsPostModalOpen] = useState(false);
-
   const [globalUser] = useGlobalUser();
+
+  const navigate = useNavigate();
 
   function handleOpenMenu() {
     const isMenuClosed = menu === MENU_STATES.CLOSED;
@@ -52,6 +54,11 @@ export function Header() {
     toast.error(message);
   }
 
+  function handleLogout() {
+    localStorage.removeItem("user");
+    navigate("/");
+  }
+
   return (
     <div className="header__container">
       <ToastContainer autoClose={8000} />
@@ -74,7 +81,9 @@ export function Header() {
             </li>
             <li className="menu__item">Search</li>
             <li className="menu__item">Profile</li>
-            <li className="menu__item">Logout</li>
+            <li className="menu__item" onClick={handleLogout}>
+              Logout
+            </li>
           </ul>
         </nav>
 

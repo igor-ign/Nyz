@@ -5,7 +5,7 @@ import { useState } from "react";
 import { ReadMoreModal } from "../ReadMoreModal/ReadMoreModal";
 
 export function Post({ content }) {
-  const [isModalOpen, setIsModalOpen] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   function handleOpenReadMoreModal() {
     setIsModalOpen(true);
