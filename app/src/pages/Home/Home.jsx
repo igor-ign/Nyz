@@ -78,21 +78,23 @@ export function Home() {
         <FeedLoader posts={posts} />
       </main>
 
-      <footer className="pagination__container">
-        <button
-          className="pagination__button"
-          onClick={handlePreviousPage}
-          disabled={isPreviousPageButtonBlocked}
-        >
-          Previous
-        </button>
-        <button
-          className="pagination__button"
-          onClick={handleNextPage}
-          disabled={isNextPageButtonBlocked}
-        >
-          Next
-        </button>
+      <footer className="footer">
+        <div className="pagination__container">
+          <button
+            className="pagination__button"
+            onClick={handlePreviousPage}
+            disabled={isPreviousPageButtonBlocked}
+          >
+            Previous
+          </button>
+          <button
+            className="pagination__button"
+            onClick={handleNextPage}
+            disabled={isNextPageButtonBlocked}
+          >
+            Next
+          </button>
+        </div>
       </footer>
     </div>
   );
