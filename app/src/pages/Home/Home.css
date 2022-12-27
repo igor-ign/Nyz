@@ -6,3 +6,31 @@
     font-family: 'Inter', sans-serif;
 
 }
+
+.pagination__container {
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+    gap: 1em;
+    background-color: var(--home--background);
+}
+
+.pagination__button {
+    width: 10em;
+    height: 3em;
+    font-family: 'Inter', sans-serif;
+    border: none;
+    border-radius: .3em;
+    cursor: pointer;
+    background-color: var(--secundary);
+    color: var(--white);
+}
+
+.pagination__button:hover {
+    background-color: var(--pagination--hover);
+}
+
+.pagination__button:disabled {
+    background-color: var(--pagination--disabled);
+    opacity: 30%;
+}

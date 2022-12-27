@@ -10,7 +10,12 @@ import { usePost } from "../../hooks";
 import { useGlobalUser } from "../../context";
 
 export function Home() {
+  const [page, setPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(1);
   const [posts, setPosts] = useState([]);
+  const [isPreviousPageButtonBlocked, setIsPreviousPageButtonBlocked] =
+    useState(false);
+  const [isNextPageButtonBlocked, setIsNextPageButtonBlocked] = useState(false);
   const [globalUser] = useGlobalUser();
 
   const { getPosts } = usePost();
@@ -20,7 +25,7 @@ export function Home() {
   useEffect(() => {
     getLoggedUser();
     handleLoadPosts();
-  }, []);
+  }, [page]);
 
   function getLoggedUser() {
     if (globalUser === null) {
@@ -29,9 +34,40 @@ export function Home() {
   }
 
   async function handleLoadPosts() {
-    const response = await getPosts(globalUser.id);
+    const params = {
+      userId: globalUser.id,
+      page: page,
+    };
 
+    const response = await getPosts(params);
+
+    setTotalPages(response.totalPages);
     setPosts(response.content);
+    handleBlockButtons();
+  }
+
+  function handleNextPage() {
+    setPage(page + 1);
+  }
+
+  function handlePreviousPage() {
+    setPage(page - 1);
+  }
+
+  function handleBlockButtons() {
+    if (page >= 1) {
+      setIsPreviousPageButtonBlocked(false);
+    }
+
+    if (page === 0) {
+      setIsPreviousPageButtonBlocked(true);
+    }
+
+    if (page > totalPages - 2) {
+      setIsNextPageButtonBlocked(true);
+    } else {
+      setIsNextPageButtonBlocked(false);
+    }
   }
 
   return (
@@ -41,6 +77,23 @@ export function Home() {
       <main className="feed__container">
         <FeedLoader posts={posts} />
       </main>
+
+      <footer className="pagination__container">
+        <button
+          className="pagination__button"
+          onClick={handlePreviousPage}
+          disabled={isPreviousPageButtonBlocked}
+        >
+          Previous
+        </button>
+        <button
+          className="pagination__button"
+          onClick={handleNextPage}
+          disabled={isNextPageButtonBlocked}
+        >
+          Next
+        </button>
+      </footer>
     </div>
   );
 }

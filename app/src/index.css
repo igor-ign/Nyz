@@ -7,16 +7,19 @@
   --error: red;
   --login--button: black;
   --input: rgba(255, 255, 255, 0.685);
-  --input--border: white;
-  --login--form--text: white;
+  --input--border:  var(--white);
+  --login--form--text: var(--white);
   --form--background: linear-gradient(147.79deg, rgba(255, 255, 255, 0.169), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.01));
   --form--shadow: 20px 20px 50px rgba(0, 0, 0, 0.25);
   --modal--background: rgba(0, 0, 0, 0.48);
-  --modal--background2: white;
-  --modal--button--background: white;
+  --modal--background2:  var(--white);
+  --modal--button--background: var(--white);
   --home--background: #EFEFEF;
-  --post--background: white;
+  --post--background: var(--white);
   --author: #828282;
+  --white: white;
+  --pagination--hover: #2c69af;
+  --pagination--disabled: #51667e;
 
 }
 
