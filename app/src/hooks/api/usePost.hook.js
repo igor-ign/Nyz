@@ -10,7 +10,7 @@ export function usePost() {
     }
 
     async function getPosts(params) {
-        const apiResponse = await axios.get(`${API_PATH.POST}/${params}`)
+        const apiResponse = await axios.get(`${API_PATH.POST}/${params}?size=3`)
 
         return apiResponse.data
     }
