@@ -1,9 +1,10 @@
 .home__container {
-    width: 100vw;
+    width: 100%;
     height: 100vh;
 }
 
 .feed__container {
+    height: 100vh;
     background-color: var(--home--background);
     padding-top: 3em;
     font-family: 'Inter', sans-serif;
