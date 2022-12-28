@@ -8,7 +8,7 @@ import { PostModal } from "../PostModal/PostModal";
 
 import { useGlobalUser } from "../../context";
 
-import { MENU_STATES } from "../../constants";
+import { MENU_STATES, WEBSITE_PATHS } from "../../constants";
 
 import NYZ_LOGO from "../../assets/nyz__logo.svg";
 import HAMBURGER from "../../assets/hamburger__icon.svg";
@@ -59,6 +59,12 @@ export function Header() {
     navigate("/");
   }
 
+  function handleNavigate(e) {
+    const { id } = e.target;
+
+    navigate(`http://localhost:3000${WEBSITE_PATHS[id]}`);
+  }
+
   return (
     <div className="header__container">
       <ToastContainer autoClose={8000} />
@@ -75,12 +81,18 @@ export function Header() {
 
         <nav className={`nav ${menu}`}>
           <ul className="menu__container" type="none">
-            <li className="menu__item">Home</li>
+            <li className="menu__item" onClick={handleNavigate} id="HOME">
+              Home
+            </li>
             <li className="menu__item" onClick={handleOpenPostModal}>
               Add Post
             </li>
-            <li className="menu__item">Search</li>
-            <li className="menu__item">Profile</li>
+            <li className="menu__item" onClick={handleNavigate} id="SEARCH">
+              Search
+            </li>
+            <li className="menu__item" onClick={handleNavigate} id="PROFILE">
+              Profile
+            </li>
             <li className="menu__item" onClick={handleLogout}>
               Logout
             </li>
