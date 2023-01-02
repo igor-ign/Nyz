@@ -62,7 +62,7 @@ export function Header() {
   function handleNavigate(e) {
     const { id } = e.target;
 
-    navigate(`http://localhost:3000${WEBSITE_PATHS[id]}`);
+    navigate(`${WEBSITE_PATHS[id]}`);
   }
 
   return (

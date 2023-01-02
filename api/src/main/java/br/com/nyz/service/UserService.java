@@ -6,6 +6,8 @@ import br.com.nyz.domain.User;
 import br.com.nyz.mapper.UserMapper;
 import br.com.nyz.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -29,6 +31,14 @@ public class UserService {
         }
 
         UserResponse response = UserMapper.toResponse(user);
+
+        return response;
+    }
+
+    public Page<UserResponse> listUsers(String request, Pageable pageable) {
+        Page<User> users = userRepository.findByName(request, pageable);
+
+        Page<UserResponse> response = users.map(user -> UserMapper.toResponse(user));
 
         return response;
     }

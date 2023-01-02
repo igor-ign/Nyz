@@ -5,7 +5,7 @@
 
 .feed__container {
     min-height: 100vh;
-    background-color: var(--home--background);
+    background-color: var(--website--background);
     padding-top: 3em;
     font-family: 'Inter', sans-serif;
 
@@ -13,7 +13,7 @@
 
 .footer {
     padding: 1em;
-    background-color: var(--home--background);
+    background-color: var(--website--background);
 }
 
 .pagination__container {

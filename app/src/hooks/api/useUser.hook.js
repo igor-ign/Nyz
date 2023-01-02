@@ -14,9 +14,15 @@ export function useUser() {
 
         return apiResponse.data
     }
+
+    async function getUsers(params) {
+        const apiResponse = await axios.get(`${API_PATH.USER}/users/${params}`)
+
+        return apiResponse.data
+    }
   
     return {
-        login, register
+        login, register, getUsers
     }
   }
   

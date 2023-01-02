@@ -7,7 +7,7 @@ CREATE TABLE "user"(
 	name VARCHAR(100) NOT NULL,
 	profile_picture VARCHAR(500),
 	email VARCHAR(100) NOT NULL,
-	password VARCHAR(200) NOT NULL
+	password VARCHAR(500) NOT NULL
 
 );
 
@@ -18,7 +18,7 @@ CREATE TABLE Post(
 	author_email VARCHAR(100) NOT NULL,
 	author_picture VARCHAR(500),
 	title VARCHAR(80) NOT NULL,
-	description VARCHAR(100) NOT NULL,
+	description VARCHAR(200) NOT NULL,
 	post_content VARCHAR(500) NOT NULL
 	
 );
@@ -37,6 +37,7 @@ INSERT INTO "user" (name, profile_picture, email, password) values('Igor Ignáci
 INSERT INTO "user" (name, profile_picture, email, password) values('John Laimes', '', 'john@hotmail.com', '$2a$10$QSWmPEXggG6aZw4iJ.DYnO7Y2IcDMNGbfRWViO3euRbf9iOnN5XfC');
 INSERT INTO "user" (name, profile_picture, email, password) values('Jesse Pattkins', '', 'jesse@hotmail.com', '$2a$10$QSWmPEXggG6aZw4iJ.DYnO7Y2IcDMNGbfRWViO3euRbf9iOnN5XfC');
 INSERT INTO "user" (name, profile_picture, email, password) values('Lenny Hawkings', '', 'lenne@hotmail.com', '$2a$10$QSWmPEXggG6aZw4iJ.DYnO7Y2IcDMNGbfRWViO3euRbf9iOnN5XfC');
+INSERT INTO "user" (name, profile_picture, email, password) values('Lenny Philips', '', 'lenphil@hotmail.com', '$2a$10$QSWmPEXggG6aZw4iJ.DYnO7Y2IcDMNGbfRWViO3euRbf9iOnN5XfC');
 
 INSERT INTO Post (author_id, author_name, author_email, author_picture, title, description, post_content) VALUES(1,'Igor Ignácio', 'igor@hotmail.com', '', 'How to learn Javascript', 'In this post I am teaching you the basics about how to learn JS', 'If you want to learn Javascript you need to have a clear roadmap in order to know what path you should follow, also you need to be consistent and focused.');
 INSERT INTO Post (author_id, author_name, author_email, author_picture, title, description, post_content) VALUES(4, 'Lenny Hawkings', 'lenne@hotmail.com', '', 'Money management, do you know how it works?', 'The better you manage your money, the more you will have in the future.', 'You need to know what is really important for you and what is not in order to waste less money. We usually spend our money in things that we will not even use.');

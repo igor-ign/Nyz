@@ -55,19 +55,15 @@ export function Home() {
   }
 
   function handleBlockButtons() {
-    if (page >= 1) {
-      setIsPreviousPageButtonBlocked(false);
-    }
+    const isPageNotInitial = page >= 1;
+    const isFinalPage = page > totalPages - 2;
 
-    if (page === 0) {
-      setIsPreviousPageButtonBlocked(true);
-    }
-
-    if (page > totalPages - 2) {
-      setIsNextPageButtonBlocked(true);
-    } else {
-      setIsNextPageButtonBlocked(false);
-    }
+    isPageNotInitial
+      ? setIsPreviousPageButtonBlocked(false)
+      : setIsPreviousPageButtonBlocked(true);
+    isFinalPage
+      ? setIsNextPageButtonBlocked(true)
+      : setIsNextPageButtonBlocked(false);
   }
 
   return (

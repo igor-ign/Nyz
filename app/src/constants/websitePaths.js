@@ -1,4 +1,5 @@
 export const WEBSITE_PATHS = {
     HOME: "/home",
-    REGISTER: "/register"
+    REGISTER: "/register",
+    SEARCH: "/search"
 }

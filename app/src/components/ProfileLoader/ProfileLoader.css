@@ -1,0 +1,22 @@
+.profiles {
+    width: 36em;
+    max-width: 80%;
+    margin: 5em auto 0 auto;
+    padding: .5em;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .8em;
+    width: 100%;
+    background-color: var(--white);
+    border-radius: .3em;
+    margin-top: 1em;
+}
+
+.profile__info {
+    display: flex;
+    align-items: center;
+}
