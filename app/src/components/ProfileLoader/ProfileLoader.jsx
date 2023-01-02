@@ -20,6 +20,8 @@ export function ProfileLoader({ profiles }) {
             {globalUser.id !== profile.id && (
               <button className="profile__button follow">Follow</button>
             )}
+
+            {/* TODO : followed users Filtering*/}
           </li>
         );
       })}

@@ -43,3 +43,9 @@
     border: none;
     cursor: pointer;
 }
+
+.no__profiles {
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+    margin-top: 10em;
+}
