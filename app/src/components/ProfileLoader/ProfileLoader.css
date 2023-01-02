@@ -3,6 +3,7 @@
     max-width: 80%;
     margin: 5em auto 0 auto;
     padding: .5em;
+    font-family: 'Inter', sans-serif;
 }
 
 .profile {
@@ -18,5 +19,33 @@
 
 .profile__info {
     display: flex;
-    align-items: center;
+    align-items: center;   
+    gap: 1em; 
+    width: 13em;
+    max-width: 100%;
+}
+
+.profile__button {
+    border: none;
+    border-radius: .3em;
+    font-size: 1rem;
+    width: 5em;
+    height: 2em;
+    color: var(--white);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.follow {
+    background-color: var(--secundary);
+}
+
+.unfollow {
+    background-color: var(--orange);
+}
+
+@media (max-width: 480px) {
+    .profile {
+        flex-direction: column;
+    }
 }

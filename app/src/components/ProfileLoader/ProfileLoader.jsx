@@ -1,8 +1,12 @@
 import "./ProfileLoader.css";
 
+import { useGlobalUser } from "../../context";
+
 import DEFAULT from "../../assets/default__profile__picture.svg";
 
 export function ProfileLoader({ profiles }) {
+  const [globalUser] = useGlobalUser();
+
   return (
     <ul className="profiles" type="none">
       {profiles.map((profile) => {
@@ -13,7 +17,9 @@ export function ProfileLoader({ profiles }) {
               <h3>{profile.name}</h3>
             </div>
 
-            <button>Follow</button>
+            {globalUser.id !== profile.id && (
+              <button className="profile__button follow">Follow</button>
+            )}
           </li>
         );
       })}
