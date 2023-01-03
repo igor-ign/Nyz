@@ -15,8 +15,14 @@ export function usePost() {
         return apiResponse.data
     }
 
+    async function getMyPosts(params) {
+        const apiResponse = await axios.get(`${API_PATH.POST}/myposts/${params.id}?size=3&page=${params.page}`)
+
+        return apiResponse.data
+    }
+
     return {
-        addPost, getPosts
+        addPost, getPosts, getMyPosts
     }
   }
   

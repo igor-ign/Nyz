@@ -1,5 +1,7 @@
 export const WEBSITE_PATHS = {
+    LOGIN: "/",
     HOME: "/home",
     REGISTER: "/register",
-    SEARCH: "/search"
+    SEARCH: "/search",
+    PROFILE: "/profile"
 }

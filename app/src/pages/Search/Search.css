@@ -10,6 +10,8 @@
     padding: 1em;
 }
 
+/*TODO: Understand why header behavior is different here*/
+
 .search__bar {
     background-color: var(--white);
     display: flex;
