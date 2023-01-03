@@ -29,4 +29,8 @@ public class PostController {
         return listPostsService.list(userId, pageable);
     }
 
+    @GetMapping("/myposts/{myId}")
+    public Page<PostResponse> myPosts(@PathVariable Integer myId, Pageable pageable) {
+        return listPostsService.myPosts(myId, pageable);
+    }
 }

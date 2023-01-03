@@ -33,6 +33,7 @@ public class SecurityConfig {
                 .antMatchers(GET, "/api/post").permitAll()
                 .antMatchers(GET, "/api/post/**").permitAll()
                 .antMatchers(POST, "/api/post/add").permitAll()
+                .antMatchers(GET, "/api/post/myposts/**").permitAll()
                 .and()
                 .authorizeRequests()
                 .anyRequest().authenticated()

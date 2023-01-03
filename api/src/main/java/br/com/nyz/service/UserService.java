@@ -39,7 +39,7 @@ public class UserService {
         Page<User> users = userRepository.findByName(request, pageable);
 
         Page<UserResponse> response = users.map(user -> UserMapper.toResponse(user));
-        
+
         // TODO : add "isUserFollowed" in order to make some verification
 
         return response;
