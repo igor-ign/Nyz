@@ -3,7 +3,7 @@ import "./Home.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { FeedLoader, Header } from "../../components";
+import { FeedLoader, Header, Pagination } from "../../components";
 
 import { usePost } from "../../hooks";
 
@@ -25,7 +25,6 @@ export function Home() {
   useEffect(() => {
     getLoggedUser();
     handleLoadPosts();
-    handleBlockButtons();
   }, [, page]);
 
   function getLoggedUser() {
@@ -35,6 +34,7 @@ export function Home() {
   }
 
   async function handleLoadPosts() {
+    // TODO : add try catch
     const params = {
       userId: globalUser.id,
       page: page,
@@ -46,27 +46,6 @@ export function Home() {
     setPosts(response.content);
   }
 
-  function handleNextPage() {
-    setPage(page + 1);
-  }
-
-  function handlePreviousPage() {
-    setPage(page - 1);
-  }
-
-  function handleBlockButtons() {
-    const isPageNotInitial = page >= 1;
-    const isFinalPage = page === totalPages - 1;
-
-    isPageNotInitial
-      ? setIsPreviousPageButtonBlocked(false)
-      : setIsPreviousPageButtonBlocked(true);
-
-    isFinalPage
-      ? setIsNextPageButtonBlocked(true)
-      : setIsNextPageButtonBlocked(false);
-  }
-
   return (
     <div className="home__container">
       <Header />
@@ -76,22 +55,15 @@ export function Home() {
       </main>
 
       <footer className="footer">
-        <div className="pagination__container">
-          <button
-            className="pagination__button"
-            onClick={handlePreviousPage}
-            disabled={isPreviousPageButtonBlocked}
-          >
-            Previous
-          </button>
-          <button
-            className="pagination__button"
-            onClick={handleNextPage}
-            disabled={isNextPageButtonBlocked}
-          >
-            Next
-          </button>
-        </div>
+        <Pagination
+          page={page}
+          totalPages={totalPages}
+          isPreviousPageButtonBlocked={isPreviousPageButtonBlocked}
+          isNextPageButtonBlocked={isNextPageButtonBlocked}
+          setIsNextPageButtonBlocked={setIsNextPageButtonBlocked}
+          setIsPreviousPageButtonBlocked={setIsPreviousPageButtonBlocked}
+          setPage={setPage}
+        />
       </footer>
     </div>
   );
