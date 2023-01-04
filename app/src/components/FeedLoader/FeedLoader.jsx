@@ -7,13 +7,15 @@ import { ReadMoreModal } from "../ReadMoreModal/ReadMoreModal";
 export function FeedLoader({ posts }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  function handleOpenReadMoreModal() {
+  function handleOpenReadMoreModal(post) {
     setIsModalOpen(true);
   }
 
   function handleCloseReadMoreModal() {
     setIsModalOpen(false);
   }
+
+  //TODO: Fix readmore modal bug
   return (
     <div className="feed__content">
       {posts.map((post) => {
@@ -36,7 +38,7 @@ export function FeedLoader({ posts }) {
 
             <button
               className="readmore__button"
-              onClick={handleOpenReadMoreModal}
+              onClick={() => handleOpenReadMoreModal(post)}
             >
               Read more
             </button>
