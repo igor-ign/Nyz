@@ -7,9 +7,9 @@
 .post__container {
     background-color: var(--post--background);
     margin: 0 auto;
-    width: 50em;
-    max-width: 80%;
-    padding: 2em;
+    width: 40em;
+    max-width: 75%;
+    padding: 1em;
     border-radius: .3em;
 }
 
@@ -25,10 +25,14 @@
     background-color: var(--primary);
     border: none;
     border-radius: .3em;
-    width: 12em;
-    height: 2.4em;
+    width: 10em;
+    height: 2em;
     max-width: 100%;
     margin-top: 2em;
-    font-size: 1rem;
+    font-size: .9rem;
     cursor: pointer;
+}
+
+.post__title {
+    font-size: 1.3rem;
 }

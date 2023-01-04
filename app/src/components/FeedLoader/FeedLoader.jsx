@@ -27,9 +27,9 @@ export function FeedLoader({ posts }) {
             />
 
             <div className="post__header">
-              <h1 className="post__title">{post.title}</h1>
+              <h3 className="post__title">{post.title}</h3>
 
-              <h3 className="author">By: {post.authorName}</h3>
+              <h4 className="author">By: {post.authorName}</h4>
             </div>
 
             <p className="post__description">{post.description}</p>

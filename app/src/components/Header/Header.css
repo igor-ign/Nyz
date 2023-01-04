@@ -52,6 +52,8 @@
         transition: 0.5s ease-in-out;
         max-width: 100%;
         overflow: hidden;
+        background-color: var(--white);
+        z-index: 999;
     }
 
     .menu__container {

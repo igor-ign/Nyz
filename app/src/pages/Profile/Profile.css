@@ -4,7 +4,7 @@
 }
 
 .profile__content {
-    min-height: 100vh;
+    min-height: 98vh;
     background-color: var(--website--background);
     padding-top: 3em;
     font-family: 'Inter', sans-serif;
@@ -23,6 +23,8 @@
 }
 
 .profile__posts {
+    display: flex;
+    flex-direction: column;
     background-color: var(--white);
     margin: 5em auto 0 auto;
     width: 40em;
@@ -50,4 +52,10 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+}
+
+@media (max-width: 480px) {
+    .profile__post__button {
+        align-self: center;
+    }
 }

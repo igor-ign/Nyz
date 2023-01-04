@@ -3,12 +3,10 @@
     min-height: 100vh;
 }
 
-/*TODO: Refact home style*/
-
 .feed__container {
-    min-height: 100vh;
+    min-height: 95vh;
     background-color: var(--website--background);
-    padding-top: 3em;
+    padding-top: 2em;
     font-family: 'Inter', sans-serif;
 
 }
