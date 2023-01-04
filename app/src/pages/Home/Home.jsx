@@ -11,10 +11,10 @@ import { useGlobalUser } from "../../context";
 
 export function Home() {
   const [page, setPage] = useState(0);
-  const [totalPages, setTotalPages] = useState(1);
+  const [totalPages, setTotalPages] = useState();
   const [posts, setPosts] = useState([]);
   const [isPreviousPageButtonBlocked, setIsPreviousPageButtonBlocked] =
-    useState(false);
+    useState(true);
   const [isNextPageButtonBlocked, setIsNextPageButtonBlocked] = useState(false);
   const [globalUser] = useGlobalUser();
 
@@ -25,7 +25,8 @@ export function Home() {
   useEffect(() => {
     getLoggedUser();
     handleLoadPosts();
-  }, [page]);
+    handleBlockButtons();
+  }, [, page]);
 
   function getLoggedUser() {
     if (globalUser === null) {
@@ -43,7 +44,6 @@ export function Home() {
 
     setTotalPages(response.totalPages);
     setPosts(response.content);
-    handleBlockButtons();
   }
 
   function handleNextPage() {
@@ -56,11 +56,12 @@ export function Home() {
 
   function handleBlockButtons() {
     const isPageNotInitial = page >= 1;
-    const isFinalPage = page > totalPages - 2;
+    const isFinalPage = page === totalPages - 1;
 
     isPageNotInitial
       ? setIsPreviousPageButtonBlocked(false)
       : setIsPreviousPageButtonBlocked(true);
+
     isFinalPage
       ? setIsNextPageButtonBlocked(true)
       : setIsNextPageButtonBlocked(false);

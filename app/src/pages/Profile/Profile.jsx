@@ -111,6 +111,7 @@ export function Profile() {
           })}
         </ul>
 
+        {/*TODO: Pagination component*/}
         <footer className="footer">
           <div className="pagination__container">
             <button

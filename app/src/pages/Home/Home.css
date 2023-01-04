@@ -3,6 +3,8 @@
     min-height: 100vh;
 }
 
+/*TODO: Refact home style*/
+
 .feed__container {
     min-height: 100vh;
     background-color: var(--website--background);
