@@ -3,6 +3,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 import { Header, Pagination, ReadMoreModal } from "../../components";
 
@@ -10,7 +11,11 @@ import { useGlobalUser } from "../../context";
 
 import { usePost } from "../../hooks";
 
-import { POSTS_LOAD_ERROR, TOAST_DEFAULT_DURATION } from "../../constants";
+import {
+  POSTS_LOAD_ERROR,
+  TOAST_DEFAULT_DURATION,
+  WEBSITE_PATHS,
+} from "../../constants";
 
 import DEFAULT from "../../assets/default__profile__picture.svg";
 
@@ -26,9 +31,10 @@ export function Profile() {
   const [globalUser] = useGlobalUser();
 
   const { getMyPosts } = usePost();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    getPosts();
+    !globalUser.id ? navigate(WEBSITE_PATHS.LOGIN) : getPosts();
   }, []);
 
   async function getPosts() {

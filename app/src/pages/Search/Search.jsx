@@ -1,8 +1,9 @@
 import "./Search.css";
 import "react-toastify/dist/ReactToastify.css";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 import SEARCH from "../../assets/search__icon.svg";
 
@@ -10,15 +11,27 @@ import { Header, ProfileLoader } from "../../components";
 
 import { useUser } from "../../hooks";
 
+import { useGlobalUser } from "../../context";
+
 import {
   NO_PROFILES,
   SEARCH_ERROR,
   TOAST_DEFAULT_DURATION,
+  WEBSITE_PATHS,
 } from "../../constants";
 
 export function Search() {
   const [name, setName] = useState("");
   const [profiles, setProfiles] = useState();
+  const [globalUser] = useGlobalUser();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!globalUser.id) {
+      navigate(WEBSITE_PATHS.LOGIN);
+    }
+  }, []);
 
   const { getUsers } = useUser();
 
