@@ -11,7 +11,11 @@ import { usePost } from "../../hooks";
 
 import { useGlobalUser } from "../../context";
 
-import { POSTS_LOAD_ERROR, TOAST_DEFAULT_DURATION } from "../../constants";
+import {
+  POSTS_LOAD_ERROR,
+  TOAST_DEFAULT_DURATION,
+  WEBSITE_PATHS,
+} from "../../constants";
 
 export function Home() {
   const [page, setPage] = useState(0);
@@ -32,8 +36,8 @@ export function Home() {
   }, [, page]);
 
   function getLoggedUser() {
-    if (globalUser === null) {
-      navigate("/");
+    if (!globalUser) {
+      navigate(WEBSITE_PATHS.LOGIN);
     }
   }
 
@@ -44,10 +48,10 @@ export function Home() {
         page: page,
       };
 
-      const response = await getPosts(params);
+      const { content, totalPages } = await getPosts(params);
 
-      setTotalPages(response.totalPages);
-      setPosts(response.content);
+      setTotalPages(totalPages);
+      setPosts(content);
     } catch {
       toast.error(POSTS_LOAD_ERROR);
     }
