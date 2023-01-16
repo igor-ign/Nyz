@@ -6,8 +6,10 @@ import { ReadMoreModal } from "../ReadMoreModal/ReadMoreModal";
 
 export function FeedLoader({ posts }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPost, setSelectedPost] = useState({});
 
   function handleOpenReadMoreModal(post) {
+    setSelectedPost(post);
     setIsModalOpen(true);
   }
 
@@ -15,15 +17,14 @@ export function FeedLoader({ posts }) {
     setIsModalOpen(false);
   }
 
-  //TODO: Fix readmore modal bug
   return (
     <div className="feed__content">
       {posts.map((post) => {
         return (
           <div key={post.id} className="post__container">
             <ReadMoreModal
-              postTitle={post.title}
-              postContent={post.postContent}
+              postTitle={selectedPost.title}
+              postContent={selectedPost.postContent}
               handleClose={handleCloseReadMoreModal}
               isOpen={isModalOpen}
             />

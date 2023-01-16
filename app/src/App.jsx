@@ -7,6 +7,7 @@ import { Login, Register, Home, Search, Profile } from "./pages";
 import { WEBSITE_PATHS } from "./constants";
 
 function AppRoutes() {
+  //TODO: fix console error messages
   return (
     <div className="app-routes">
       <Routes>
