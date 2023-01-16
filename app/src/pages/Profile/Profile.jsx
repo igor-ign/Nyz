@@ -1,12 +1,16 @@
 import "./Profile.css";
+import "react-toastify/dist/ReactToastify.css";
 
 import { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 import { Header, Pagination, ReadMoreModal } from "../../components";
 
 import { useGlobalUser } from "../../context";
 
 import { usePost } from "../../hooks";
+
+import { POSTS_LOAD_ERROR, TOAST_DEFAULT_DURATION } from "../../constants";
 
 import DEFAULT from "../../assets/default__profile__picture.svg";
 
@@ -34,11 +38,11 @@ export function Profile() {
         page,
       };
 
-      const response = await getMyPosts(params);
-      setMyPosts(response.content);
-      setTotalPages(response.totalPages);
-    } catch (e) {
-      console.error(e);
+      const { content, totalPages } = await getMyPosts(params);
+      setMyPosts(content);
+      setTotalPages(totalPages);
+    } catch {
+      toast.error(POSTS_LOAD_ERROR);
     }
   }
 
@@ -52,6 +56,7 @@ export function Profile() {
 
   return (
     <div className="profile__container">
+      <ToastContainer autoClose={TOAST_DEFAULT_DURATION} />
       <Header />
 
       <div className="profile__content">
@@ -65,6 +70,7 @@ export function Profile() {
         </div>
 
         <ul className="profile__posts" type="none">
+          {/* TODO: Think about refactoring feed loader component to fit here */}
           {myPosts.map((post) => {
             return (
               <li className="profile__post" key={post.id}>
