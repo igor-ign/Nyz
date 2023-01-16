@@ -20,6 +20,7 @@ import HAMBURGER from "../../assets/hamburger__icon.svg";
 import CLOSE_MENU from "../../assets/close__menu.svg";
 
 export function Header() {
+  //TODO: understand why header is not working for mobile correctly
   const [menuImage, setMenuImage] = useState(HAMBURGER);
   const [menu, setMenu] = useState(MENU_STATES.CLOSED);
   const [isPostModalOpen, setIsPostModalOpen] = useState(false);
@@ -28,19 +29,10 @@ export function Header() {
   const navigate = useNavigate();
 
   function handleOpenMenu() {
-    //TODO: Refact those lines
     const isMenuClosed = menu === MENU_STATES.CLOSED;
-    const isMenuOpen = menu === MENU_STATES.OPEN;
 
-    if (isMenuClosed) {
-      setMenu(MENU_STATES.OPEN);
-      setMenuImage(CLOSE_MENU);
-    }
-
-    if (isMenuOpen) {
-      setMenu(MENU_STATES.CLOSED);
-      setMenuImage(HAMBURGER);
-    }
+    isMenuClosed ? setMenuImage(CLOSE_MENU) : setMenuImage(HAMBURGER);
+    isMenuClosed ? setMenu(MENU_STATES.OPEN) : setMenu(MENU_STATES.CLOSED);
   }
 
   function handleOpenPostModal() {
