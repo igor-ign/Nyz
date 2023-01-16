@@ -11,7 +11,7 @@ export function ProfileLoader({ profiles }) {
     <ul className="profiles" type="none">
       {profiles.map((profile) => {
         return (
-          <li className="profile">
+          <li className="profile" key={profile.id}>
             <div className="profile__info">
               <img src={profile.profilePicture || DEFAULT} alt="User profile" />
               <h3>{profile.name}</h3>

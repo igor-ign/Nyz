@@ -53,7 +53,7 @@ export function Header() {
 
   function handleLogout() {
     localStorage.removeItem("user");
-    navigate("/");
+    navigate(WEBSITE_PATHS.LOGIN);
   }
 
   function handleNavigate(e) {

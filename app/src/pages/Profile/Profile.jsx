@@ -67,7 +67,7 @@ export function Profile() {
         <ul className="profile__posts" type="none">
           {myPosts.map((post) => {
             return (
-              <li className="profile__post">
+              <li className="profile__post" key={post.id}>
                 <ReadMoreModal
                   postTitle={post.title}
                   postContent={post.postContent}
