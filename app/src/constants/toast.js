@@ -1,0 +1,1 @@
+export const TOAST_DEFAULT_DURATION = 8000

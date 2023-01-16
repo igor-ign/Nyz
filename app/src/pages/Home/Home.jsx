@@ -1,13 +1,17 @@
 import "./Home.css";
+import "react-toastify/dist/ReactToastify.css";
 
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 import { FeedLoader, Header, Pagination } from "../../components";
 
 import { usePost } from "../../hooks";
 
 import { useGlobalUser } from "../../context";
+
+import { POSTS_LOAD_ERROR, TOAST_DEFAULT_DURATION } from "../../constants";
 
 export function Home() {
   const [page, setPage] = useState(0);
@@ -34,21 +38,26 @@ export function Home() {
   }
 
   async function handleLoadPosts() {
-    // TODO : add try catch
-    const params = {
-      userId: globalUser.id,
-      page: page,
-    };
+    try {
+      const params = {
+        userId: globalUser.id,
+        page: page,
+      };
 
-    const response = await getPosts(params);
+      const response = await getPosts(params);
 
-    setTotalPages(response.totalPages);
-    setPosts(response.content);
+      setTotalPages(response.totalPages);
+      setPosts(response.content);
+    } catch {
+      toast.error(POSTS_LOAD_ERROR);
+    }
   }
 
   return (
     <div className="home__container">
       <Header />
+
+      <ToastContainer autoClose={TOAST_DEFAULT_DURATION} />
 
       <main className="feed__container">
         <FeedLoader posts={posts} />

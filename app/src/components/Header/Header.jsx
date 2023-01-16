@@ -3,6 +3,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 import { PostModal } from "../PostModal/PostModal";
 
@@ -13,7 +14,6 @@ import { MENU_STATES, WEBSITE_PATHS } from "../../constants";
 import NYZ_LOGO from "../../assets/nyz__logo.svg";
 import HAMBURGER from "../../assets/hamburger__icon.svg";
 import CLOSE_MENU from "../../assets/close__menu.svg";
-import { useNavigate } from "react-router-dom";
 
 export function Header() {
   const [menuImage, setMenuImage] = useState(HAMBURGER);
@@ -24,6 +24,7 @@ export function Header() {
   const navigate = useNavigate();
 
   function handleOpenMenu() {
+    //TODO: Refact those lines
     const isMenuClosed = menu === MENU_STATES.CLOSED;
     const isMenuOpen = menu === MENU_STATES.OPEN;
 
