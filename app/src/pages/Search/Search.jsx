@@ -24,8 +24,8 @@ export function Search() {
 
   async function getProfiles() {
     try {
-      const users = await getUsers(name);
-      setProfiles(users.content);
+      const { content } = await getUsers(name);
+      setProfiles(content);
     } catch (e) {
       const errorMessage = e;
 
@@ -33,10 +33,19 @@ export function Search() {
     }
   }
 
+  function getPageContent() {
+    return profiles ? (
+      <ProfileLoader profiles={profiles} />
+    ) : (
+      <div className="no__profiles">{NO_PROFILES}</div>
+    );
+  }
+
   function handleInputChange(e) {
     const { value } = e.target;
     setName(value);
   }
+
   return (
     <div className="search__container">
       <ToastContainer autoClose={TOAST_DEFAULT_DURATION} />
@@ -54,10 +63,7 @@ export function Search() {
             onChange={handleInputChange}
           />
         </div>
-        <main className="search__result">
-          {profiles && <ProfileLoader profiles={profiles} />}
-          {!profiles && <div className="no__profiles">{NO_PROFILES}</div>}
-        </main>
+        <main className="search__result">{getPageContent()}</main>
       </div>
     </div>
   );
