@@ -11,7 +11,11 @@ import { useUser } from "../../hooks/api/useUser.hook";
 
 import { useGlobalUser } from "../../context";
 
-import { REGISTER_ERROR, WEBSITE_PATHS } from "../../constants";
+import {
+  REGISTER_ERROR,
+  WEBSITE_PATHS,
+  TOAST_DEFAULT_DURATION,
+} from "../../constants";
 
 export function Register() {
   const [, setGlobalUser] = useGlobalUser();
@@ -43,7 +47,7 @@ export function Register() {
 
   return (
     <div className="register__container">
-      <ToastContainer autoClose={8000} />
+      <ToastContainer autoClose={TOAST_DEFAULT_DURATION} />
       <form className="register__form" onSubmit={handleRegister}>
         <h1 className="form__title">Sign up</h1>
 

@@ -12,7 +12,11 @@ import { useUser } from "../../hooks/api/useUser.hook";
 
 import { useGlobalUser } from "../../context";
 
-import { LOGIN_ERROR, WEBSITE_PATHS } from "../../constants";
+import {
+  LOGIN_ERROR,
+  WEBSITE_PATHS,
+  TOAST_DEFAULT_DURATION,
+} from "../../constants";
 
 export function Login() {
   const [, setGlobalUser] = useGlobalUser();
@@ -45,7 +49,7 @@ export function Login() {
 
   return (
     <div className="login__container">
-      <ToastContainer autoClose={8000} />
+      <ToastContainer autoClose={TOAST_DEFAULT_DURATION} />
       <form className="login__form" onSubmit={handleLogin}>
         <h1 className="form__title">Sign in</h1>
 

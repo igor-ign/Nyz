@@ -9,7 +9,11 @@ import { PostModal } from "../PostModal/PostModal";
 
 import { useGlobalUser } from "../../context";
 
-import { MENU_STATES, WEBSITE_PATHS } from "../../constants";
+import {
+  MENU_STATES,
+  WEBSITE_PATHS,
+  TOAST_DEFAULT_DURATION,
+} from "../../constants";
 
 import NYZ_LOGO from "../../assets/nyz__logo.svg";
 import HAMBURGER from "../../assets/hamburger__icon.svg";
@@ -68,7 +72,7 @@ export function Header() {
 
   return (
     <div className="header__container">
-      <ToastContainer autoClose={8000} />
+      <ToastContainer autoClose={TOAST_DEFAULT_DURATION} />
       <PostModal
         isOpen={isPostModalOpen}
         handleClose={handleClosePostModal}

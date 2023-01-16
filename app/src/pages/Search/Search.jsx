@@ -10,7 +10,11 @@ import { Header, ProfileLoader } from "../../components";
 
 import { useUser } from "../../hooks";
 
-import { NO_PROFILES, SEARCH_ERROR } from "../../constants";
+import {
+  NO_PROFILES,
+  SEARCH_ERROR,
+  TOAST_DEFAULT_DURATION,
+} from "../../constants";
 
 export function Search() {
   const [name, setName] = useState("");
@@ -35,7 +39,7 @@ export function Search() {
   }
   return (
     <div className="search__container">
-      <ToastContainer autoClose={8000} />
+      <ToastContainer autoClose={TOAST_DEFAULT_DURATION} />
       <Header />
 
       <div className="search__content">
