@@ -20,7 +20,6 @@ import HAMBURGER from "../../assets/hamburger__icon.svg";
 import CLOSE_MENU from "../../assets/close__menu.svg";
 
 export function Header() {
-  //TODO: understand why header is not working for mobile correctly
   const [menuImage, setMenuImage] = useState(HAMBURGER);
   const [menu, setMenu] = useState(MENU_STATES.CLOSED);
   const [isPostModalOpen, setIsPostModalOpen] = useState(false);
