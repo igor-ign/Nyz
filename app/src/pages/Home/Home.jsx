@@ -31,15 +31,8 @@ export function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getLoggedUser();
-    handleLoadPosts();
+    !globalUser.id ? navigate(WEBSITE_PATHS.LOGIN) : handleLoadPosts();
   }, [, page]);
-
-  function getLoggedUser() {
-    if (!globalUser) {
-      navigate(WEBSITE_PATHS.LOGIN);
-    }
-  }
 
   async function handleLoadPosts() {
     try {
