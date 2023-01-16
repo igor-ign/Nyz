@@ -1,16 +1,15 @@
 .search__container {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    min-height: 100vh;
 }
 
 .search__content {
-    width: 100%;
-    min-height: 100vh;
+    min-height: 98vh;
     background-color: var(--website--background);
-    padding: 1em;
-}
+    padding-top: 3em;
+    font-family: 'Inter', sans-serif;
 
-/*TODO: Understand why header behavior is different here*/
+}
 
 .search__bar {
     background-color: var(--white);
