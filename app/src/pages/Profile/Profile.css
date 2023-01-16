@@ -25,12 +25,17 @@
 .profile__posts {
     display: flex;
     flex-direction: column;
-    background-color: var(--white);
     margin: 5em auto 0 auto;
     width: 40em;
+    max-width: 75%;
+    gap: 1em;
+}
+
+.profile__post {
     border-radius: .3em;
     padding: 1em;
-    max-width: 75%;
+    width: 100%;
+    background-color: var(--white);
 }
 
 .profile__post__description {
