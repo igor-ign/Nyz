@@ -4,8 +4,42 @@ import { useGlobalUser } from "../../context";
 
 import DEFAULT from "../../assets/default__profile__picture.svg";
 
+import { BUTTON_TYPE } from "../../constants";
+import { useState } from "react";
+
 export function ProfileLoader({ profiles }) {
+  const [userToFollowOrUnfollow, setUserToFollowOrUnfollow] = useState();
   const [globalUser] = useGlobalUser();
+
+  function handleValidateAction(profile) {
+    setUserToFollowOrUnfollow(profile);
+    profile.followedUser ? handleUnfollow() : handleFollow();
+  }
+
+  async function handleFollow() {
+    try {
+      const params = {
+        follower: globalUser.email,
+        followed: userToFollowOrUnfollow.email,
+      };
+      //TODO: end of the flow after backend create the endpoint
+    } catch {
+      console.error("error");
+    }
+  }
+
+  async function handleUnfollow() {
+    try {
+      const params = {
+        unfollower: globalUser.email,
+        unfollowed: userToFollowOrUnfollow.email,
+      };
+
+      //TODO: end of the flow after backend create the endpoint
+    } catch {
+      console.error("error");
+    }
+  }
 
   return (
     <ul className="profiles" type="none">
@@ -18,10 +52,15 @@ export function ProfileLoader({ profiles }) {
             </div>
 
             {globalUser.id !== profile.id && (
-              <button className="profile__button follow">Follow</button>
+              <button
+                className={`profile__button ${
+                  BUTTON_TYPE[profile.followedUser]
+                }`}
+                onClick={() => handleValidateAction(profile)}
+              >
+                {BUTTON_TYPE[profile.followedUser]}
+              </button>
             )}
-
-            {/* TODO : followed users Filtering*/}
           </li>
         );
       })}

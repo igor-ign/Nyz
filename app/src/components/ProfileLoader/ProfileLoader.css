@@ -36,11 +36,11 @@
     cursor: pointer;
 }
 
-.follow {
+.Follow {
     background-color: var(--secundary);
 }
 
-.unfollow {
+.Unfollow {
     background-color: var(--orange);
 }
 
