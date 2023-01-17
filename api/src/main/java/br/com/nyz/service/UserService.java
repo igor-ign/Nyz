@@ -1,8 +1,11 @@
 package br.com.nyz.service;
 
 import br.com.nyz.controller.request.DetailedUserRequest;
+import br.com.nyz.controller.response.ProfileResponse;
 import br.com.nyz.controller.response.UserResponse;
 import br.com.nyz.domain.User;
+import br.com.nyz.helper.ProfileHelper;
+import br.com.nyz.mapper.ProfileMapper;
 import br.com.nyz.mapper.UserMapper;
 import br.com.nyz.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +24,9 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private ProfileHelper profileHelper;
+
     public UserResponse listUser(DetailedUserRequest request) {
         String userEmail = request.getEmail();
 
@@ -35,12 +41,11 @@ public class UserService {
         return response;
     }
 
-    public Page<UserResponse> listUsers(String request, Pageable pageable) {
-        Page<User> users = userRepository.findByName(request, pageable);
+    public Page<ProfileResponse> listUsers(String authorEmail, String name, Pageable pageable) {
+        Page<User> users = userRepository.findByName(name, pageable);
 
-        Page<UserResponse> response = users.map(user -> UserMapper.toResponse(user));
-
-        // TODO : add "isUserFollowed" in order to make some verification
+        Page<ProfileResponse> response = users.map(user -> ProfileMapper.toResponse(user));
+        response.forEach(user -> profileHelper.toSeeIfUserIsFollowed(user, authorEmail));
 
         return response;
     }

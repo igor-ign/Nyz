@@ -30,8 +30,6 @@ CREATE TABLE Follow(
 	followed_id INTEGER NOT NULL
 	
 );
-ALTER TABLE Follow ADD CONSTRAINT fk_follower FOREIGN KEY (follower_id) REFERENCES "user";
-ALTER TABLE Follow ADD CONSTRAINT fk_followed FOREIGN KEY (followed_id) REFERENCES "user";
 
 INSERT INTO "user" (name, profile_picture, email, password) values('Igor Ignácio', '', 'igor@hotmail.com', '$2a$10$QSWmPEXggG6aZw4iJ.DYnO7Y2IcDMNGbfRWViO3euRbf9iOnN5XfC');
 INSERT INTO "user" (name, profile_picture, email, password) values('John Laimes', '', 'john@hotmail.com', '$2a$10$QSWmPEXggG6aZw4iJ.DYnO7Y2IcDMNGbfRWViO3euRbf9iOnN5XfC');

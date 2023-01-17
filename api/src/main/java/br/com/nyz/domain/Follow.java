@@ -18,11 +18,9 @@ public class Follow {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer id;
 
-    @JoinColumn(name = "user")
     @Column(nullable = false)
     public Integer followerId;
 
-    @JoinColumn(name = "user")
     @Column(nullable = false)
     public Integer followedId;
 }

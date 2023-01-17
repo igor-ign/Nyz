@@ -20,10 +20,10 @@ public class PostRequest {
     @NotBlank(message = "E-mail can't be null.")
     private String authorEmail;
 
-    @NotNull(message = "Author Id can't be null.")
+    @NotNull(message = "Author name can't be null.")
     private String authorName;
 
-    @NotNull(message = "Author Id can't be null.")
+    @NotNull(message = "Author picture can't be null.")
     private String authorPicture;
 
     @NotBlank(message = "Your post needs a title.")
@@ -32,6 +32,6 @@ public class PostRequest {
     @NotBlank(message = "Your post needs a description.")
     private String description;
 
-    @NotBlank(message = "Please write something before post")
+    @NotBlank(message = "Please write something before posting")
     private String postContent;
 }

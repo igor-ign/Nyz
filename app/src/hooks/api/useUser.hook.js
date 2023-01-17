@@ -16,7 +16,9 @@ export function useUser() {
     }
 
     async function getUsers(params) {
-        const apiResponse = await axios.get(`${API_PATH.USER}/users/${params}`)
+        const { authorEmail, name } = params
+        
+        const apiResponse = await axios.get(`${API_PATH.USER}/users/${authorEmail}/${name}`)
 
         return apiResponse.data
     }

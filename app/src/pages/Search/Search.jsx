@@ -27,17 +27,22 @@ export function Search() {
 
   const navigate = useNavigate();
 
+  const { getUsers } = useUser();
+
   useEffect(() => {
     if (!globalUser.id) {
       navigate(WEBSITE_PATHS.LOGIN);
     }
   }, []);
 
-  const { getUsers } = useUser();
-
   async function getProfiles() {
     try {
-      const { content } = await getUsers(name);
+      const params = {
+        name,
+        authorEmail: globalUser.email,
+      };
+
+      const { content } = await getUsers(params);
       setProfiles(content);
     } catch (e) {
       const errorMessage = e;

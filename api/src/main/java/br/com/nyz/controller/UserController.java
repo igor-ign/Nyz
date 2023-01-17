@@ -3,6 +3,7 @@ package br.com.nyz.controller;
 import br.com.nyz.controller.request.UserRegisterRequest;
 import br.com.nyz.controller.request.DetailedUserRequest;
 import br.com.nyz.controller.request.LoginRequest;
+import br.com.nyz.controller.response.ProfileResponse;
 import br.com.nyz.controller.response.UserResponse;
 import br.com.nyz.service.LoginService;
 import br.com.nyz.service.UserRegisterService;
@@ -29,9 +30,9 @@ public class UserController {
         return userService.listUser(request);
     }
 
-    @GetMapping("/users/{name}")
-    public Page<UserResponse> listUsers(@PathVariable String name, Pageable pageable) {
-        return userService.listUsers(name, pageable); // TODO: Fix "empty request body" bug
+    @GetMapping("/users/{authorEmail}/{name}")
+    public Page<ProfileResponse> listUsers(@PathVariable String authorEmail, @PathVariable String name, Pageable pageable) {
+        return userService.listUsers(authorEmail, name, pageable);
     }
 
     @PostMapping("/register")
