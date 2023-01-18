@@ -6,8 +6,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
-import static org.springframework.http.HttpMethod.GET;
-import static org.springframework.http.HttpMethod.POST;
+import static org.springframework.http.HttpMethod.*;
 import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.http.HttpStatus.UNAUTHORIZED;
 
@@ -34,6 +33,10 @@ public class SecurityConfig {
                 .antMatchers(GET, "/api/post/**").permitAll()
                 .antMatchers(POST, "/api/post/add").permitAll()
                 .antMatchers(GET, "/api/post/myposts/**").permitAll()
+                .antMatchers(POST, "/api/connections").permitAll()
+                .antMatchers(DELETE, "/api/connections").permitAll()
+                .antMatchers(POST, "/api/connections/**").permitAll()
+                .antMatchers(DELETE, "/api/connections/**").permitAll()
                 .and()
                 .authorizeRequests()
                 .anyRequest().authenticated()

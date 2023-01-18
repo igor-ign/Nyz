@@ -1,15 +1,20 @@
 import "./ProfileLoader.css";
 
+import { useState } from "react";
+
+import { useFollow } from "../../hooks";
+
 import { useGlobalUser } from "../../context";
 
 import DEFAULT from "../../assets/default__profile__picture.svg";
 
 import { BUTTON_TYPE } from "../../constants";
-import { useState } from "react";
 
 export function ProfileLoader({ profiles }) {
   const [userToFollowOrUnfollow, setUserToFollowOrUnfollow] = useState();
   const [globalUser] = useGlobalUser();
+
+  const { follow, unfollow } = useFollow();
 
   function handleValidateAction(profile) {
     setUserToFollowOrUnfollow(profile);
@@ -19,10 +24,11 @@ export function ProfileLoader({ profiles }) {
   async function handleFollow() {
     try {
       const params = {
-        follower: globalUser.email,
-        followed: userToFollowOrUnfollow.email,
+        followerEmail: globalUser.email,
+        followedEmail: userToFollowOrUnfollow.email,
       };
-      //TODO: end of the flow after backend create the endpoint
+
+      await follow(params);
     } catch {
       console.error("error");
     }
@@ -31,13 +37,13 @@ export function ProfileLoader({ profiles }) {
   async function handleUnfollow() {
     try {
       const params = {
-        unfollower: globalUser.email,
-        unfollowed: userToFollowOrUnfollow.email,
+        followerEmail: globalUser.email,
+        followedEmail: userToFollowOrUnfollow.email,
       };
 
-      //TODO: end of the flow after backend create the endpoint
-    } catch {
-      console.error("error");
+      await unfollow(params);
+    } catch (e) {
+      console.error(e);
     }
   }
 
