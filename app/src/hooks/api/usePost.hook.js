@@ -21,8 +21,14 @@ export function usePost() {
         return apiResponse.data
     }
 
+    async function removePost(params) {
+        const apiResponse = await axios.delete(`${API_PATH.POST}/remove/${params}`)
+
+        return apiResponse.data
+    }
+
     return {
-        addPost, getPosts, getMyPosts
+        addPost, getPosts, getMyPosts, removePost
     }
   }
   

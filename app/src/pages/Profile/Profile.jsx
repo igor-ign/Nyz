@@ -15,9 +15,12 @@ import {
   POSTS_LOAD_ERROR,
   TOAST_DEFAULT_DURATION,
   WEBSITE_PATHS,
+  POST_DELETE_ERROR,
+  POST_DELETE_SUCESS,
 } from "../../constants";
 
 import DEFAULT from "../../assets/default__profile__picture.svg";
+import DELETE from "../../assets/delete__icon.svg";
 
 export function Profile() {
   const [myPosts, setMyPosts] = useState([]);
@@ -30,7 +33,7 @@ export function Profile() {
 
   const [globalUser] = useGlobalUser();
 
-  const { getMyPosts } = usePost();
+  const { getMyPosts, removePost } = usePost();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -49,6 +52,17 @@ export function Profile() {
       setTotalPages(totalPages);
     } catch {
       toast.error(POSTS_LOAD_ERROR);
+    }
+  }
+
+  async function handleDeletePost(postId) {
+    try {
+      await removePost(postId);
+      getPosts();
+
+      toast.success(POST_DELETE_SUCESS);
+    } catch {
+      toast.error(POST_DELETE_ERROR);
     }
   }
 
@@ -89,6 +103,15 @@ export function Profile() {
 
                 <div className="profile__post__header">
                   <h3 className="profile__post__title">{post.title}</h3>
+
+                  <div className="post__actions">
+                    <button
+                      className="delete__post"
+                      onClick={() => handleDeletePost(post.id)}
+                    >
+                      <img src={DELETE} alt="Delete" className="delete__icon" />
+                    </button>
+                  </div>
                 </div>
 
                 <p className="profile__post__description">{post.description}</p>
