@@ -1,6 +1,6 @@
 import "./ProfileLoader.css";
 
-import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 import { useFollow } from "../../hooks";
 
@@ -8,47 +8,55 @@ import { useGlobalUser } from "../../context";
 
 import DEFAULT from "../../assets/default__profile__picture.svg";
 
-import { BUTTON_TYPE } from "../../constants";
+import { BUTTON_TYPE, TOAST_DEFAULT_DURATION } from "../../constants";
 
-export function ProfileLoader({ profiles }) {
-  const [userToFollowOrUnfollow, setUserToFollowOrUnfollow] = useState();
+export function ProfileLoader({ profiles, setProfiles }) {
   const [globalUser] = useGlobalUser();
 
   const { follow, unfollow } = useFollow();
 
   function handleValidateAction(profile) {
-    setUserToFollowOrUnfollow(profile);
-    profile.followedUser ? handleUnfollow() : handleFollow();
+    profile.followedUser ? handleUnfollow(profile) : handleFollow(profile);
   }
 
-  async function handleFollow() {
+  async function handleFollow(profile) {
     try {
       const params = {
-        followerEmail: globalUser.email,
-        followedEmail: userToFollowOrUnfollow.email,
+        followerId: globalUser.id,
+        followedId: profile.id,
       };
 
       await follow(params);
+
+      toast.success("User followed sucessfully");
     } catch {
       console.error("error");
+      toast.error("Error when trying to follow this user");
     }
+
+    setProfiles([]);
   }
 
-  async function handleUnfollow() {
+  async function handleUnfollow(profile) {
     try {
       const params = {
-        followerEmail: globalUser.email,
-        followedEmail: userToFollowOrUnfollow.email,
+        followerId: globalUser.id,
+        followedId: profile.id,
       };
 
       await unfollow(params);
+      toast.success("User Unfollowed sucessfully");
     } catch (e) {
       console.error(e);
+      toast.error("Error when trying to Unfollow this user");
     }
+
+    setProfiles([]);
   }
 
   return (
     <ul className="profiles" type="none">
+      <ToastContainer autoClose={TOAST_DEFAULT_DURATION} />
       {profiles.map((profile) => {
         return (
           <li className="profile" key={profile.id}>

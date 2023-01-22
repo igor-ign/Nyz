@@ -52,8 +52,8 @@ export function Search() {
   }
 
   function getPageContent() {
-    return profiles ? (
-      <ProfileLoader profiles={profiles} />
+    return profiles.length ? (
+      <ProfileLoader profiles={profiles} setProfiles={setProfiles} />
     ) : (
       <div className="no__profiles">{NO_PROFILES}</div>
     );
