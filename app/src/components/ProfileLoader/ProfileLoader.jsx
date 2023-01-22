@@ -8,7 +8,14 @@ import { useGlobalUser } from "../../context";
 
 import DEFAULT from "../../assets/default__profile__picture.svg";
 
-import { BUTTON_TYPE, TOAST_DEFAULT_DURATION } from "../../constants";
+import {
+  BUTTON_TYPE,
+  TOAST_DEFAULT_DURATION,
+  USER_FOLLOW_SUCCESS,
+  USER_FOLLOW_ERROR,
+  USER_UNFOLLOW_SUCCESS,
+  USER_UNFOLLOW_ERROR,
+} from "../../constants";
 
 export function ProfileLoader({ profiles, setProfiles }) {
   const [globalUser] = useGlobalUser();
@@ -28,10 +35,9 @@ export function ProfileLoader({ profiles, setProfiles }) {
 
       await follow(params);
 
-      toast.success("User followed sucessfully");
+      toast.success(USER_FOLLOW_SUCCESS);
     } catch {
-      console.error("error");
-      toast.error("Error when trying to follow this user");
+      toast.error(USER_FOLLOW_ERROR);
     }
 
     setProfiles([]);
@@ -45,10 +51,10 @@ export function ProfileLoader({ profiles, setProfiles }) {
       };
 
       await unfollow(params);
-      toast.success("User Unfollowed sucessfully");
+      toast.success(USER_UNFOLLOW_SUCCESS);
     } catch (e) {
       console.error(e);
-      toast.error("Error when trying to Unfollow this user");
+      toast.error(USER_UNFOLLOW_ERROR);
     }
 
     setProfiles([]);
