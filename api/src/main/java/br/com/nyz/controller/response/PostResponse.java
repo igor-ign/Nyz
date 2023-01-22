@@ -8,6 +8,8 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PostResponse {
+
+    private Integer id;
     private Integer authorId;
     private String authorEmail;
     private String authorName;

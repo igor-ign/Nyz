@@ -19,6 +19,7 @@ public class PostMapper {
 
     public static PostResponse toResponse(Post post) {
         return PostResponse.builder()
+                .id(post.getId())
                 .authorId(post.getAuthorId())
                 .authorEmail(post.getAuthorEmail())
                 .authorName(post.getAuthorName())

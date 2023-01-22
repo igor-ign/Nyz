@@ -1,6 +1,5 @@
 package br.com.nyz.controller;
 
-import br.com.nyz.controller.request.FollowRequest;
 import br.com.nyz.controller.response.FollowResponse;
 import br.com.nyz.service.FollowService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +12,13 @@ public class FollowController {
     @Autowired
     private FollowService followService;
 
-    @PostMapping("/follow")
-    public FollowResponse followUser(@RequestBody FollowRequest request) {
-        return followService.follow(request);
+    @PostMapping("/follow/{followerId}/{followedId}")
+    public FollowResponse followUser(@PathVariable Integer followerId, @PathVariable Integer followedId) {
+        return followService.follow(followerId, followedId);
     }
 
-    @DeleteMapping("/unfollow")
-    public FollowResponse unfollowUser(@RequestBody FollowRequest request) {
-        return followService.unfollow(request);
+    @DeleteMapping("/unfollow/{followerId}/{followedId}")
+    public FollowResponse unfollowUser(@PathVariable Integer followerId, @PathVariable Integer followedId) {
+        return followService.unfollow(followerId, followedId);
     }
 }

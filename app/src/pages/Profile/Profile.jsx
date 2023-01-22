@@ -16,7 +16,7 @@ import {
   TOAST_DEFAULT_DURATION,
   WEBSITE_PATHS,
   POST_DELETE_ERROR,
-  POST_DELETE_SUCESS,
+  POST_DELETE_SUCCESS,
 } from "../../constants";
 
 import DEFAULT from "../../assets/default__profile__picture.svg";
@@ -60,7 +60,7 @@ export function Profile() {
       await removePost(postId);
       getPosts();
 
-      toast.success(POST_DELETE_SUCESS);
+      toast.success(POST_DELETE_SUCCESS);
     } catch {
       toast.error(POST_DELETE_ERROR);
     }

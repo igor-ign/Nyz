@@ -33,4 +33,9 @@ public class PostController {
     public Page<PostResponse> myPosts(@PathVariable Integer myId, Pageable pageable) {
         return listPostsService.myPosts(myId, pageable);
     }
+
+    @DeleteMapping("/remove/{postId}")
+    public PostResponse removePost(@PathVariable Integer postId) {
+        return postService.remove(postId);
+    }
 }

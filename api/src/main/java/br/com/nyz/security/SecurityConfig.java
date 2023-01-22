@@ -37,6 +37,7 @@ public class SecurityConfig {
                 .antMatchers(DELETE, "/api/connections").permitAll()
                 .antMatchers(POST, "/api/connections/**").permitAll()
                 .antMatchers(DELETE, "/api/connections/**").permitAll()
+                .antMatchers(DELETE, "/api/post/remove/**").permitAll()
                 .and()
                 .authorizeRequests()
                 .anyRequest().authenticated()

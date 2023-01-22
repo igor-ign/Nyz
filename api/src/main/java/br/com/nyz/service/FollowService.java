@@ -1,6 +1,5 @@
 package br.com.nyz.service;
 
-import br.com.nyz.controller.request.FollowRequest;
 import br.com.nyz.controller.response.FollowResponse;
 import br.com.nyz.domain.Follow;
 import br.com.nyz.domain.User;
@@ -29,9 +28,9 @@ public class FollowService {
 
 
 
-    public FollowResponse follow(FollowRequest request) {
-        User follower = userRepository.findByEmail(request.followerEmail);
-        User followed = userRepository.findByEmail(request.followedEmail);
+    public FollowResponse follow(Integer followerId, Integer followedId) {
+        User follower = userRepository.findUserById(followerId);
+        User followed = userRepository.findUserById(followedId);
 
         followValidator.validate(follower, followed);
 
@@ -43,9 +42,9 @@ public class FollowService {
 
     }
 
-    public FollowResponse unfollow(FollowRequest request) {
-        User follower = userRepository.findByEmail(request.followerEmail);
-        User followed = userRepository.findByEmail(request.followedEmail);
+    public FollowResponse unfollow(Integer followerId, Integer followedId) {
+        User follower = userRepository.findUserById(followerId);
+        User followed = userRepository.findUserById(followedId);
 
         unfollowValidator.validate(follower, followed);
 
