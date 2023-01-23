@@ -13,12 +13,7 @@ import { useUser } from "../../hooks";
 
 import { useGlobalUser } from "../../context";
 
-import {
-  NO_PROFILES,
-  SEARCH_ERROR,
-  TOAST_DEFAULT_DURATION,
-  WEBSITE_PATHS,
-} from "../../constants";
+import { NO_PROFILES, SEARCH_ERROR, WEBSITE_PATHS } from "../../constants";
 
 export function Search() {
   const [name, setName] = useState("");
@@ -45,9 +40,7 @@ export function Search() {
       const { content } = await getUsers(params);
       setProfiles(content);
     } catch (e) {
-      const errorMessage = e;
-
-      toast.error(errorMessage || SEARCH_ERROR);
+      toast.error(SEARCH_ERROR);
     }
   }
 
