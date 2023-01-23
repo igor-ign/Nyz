@@ -15,5 +15,4 @@ export { ADD_POST_SUCCESS,
     USER_FOLLOW_ERROR, 
     USER_UNFOLLOW_ERROR, 
     USER_UNFOLLOW_SUCCESS } from "./message"
-export { TOAST_DEFAULT_DURATION } from "./toast"
 export { BUTTON_TYPE } from "./profileButton"
