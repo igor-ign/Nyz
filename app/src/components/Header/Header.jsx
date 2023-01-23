@@ -2,7 +2,6 @@ import "./Header.css";
 import "react-toastify/dist/ReactToastify.css";
 
 import { useState } from "react";
-import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 import { PostModal } from "../PostModal/PostModal";
@@ -38,14 +37,6 @@ export function Header() {
     setIsPostModalOpen(false);
   }
 
-  function handleOpenSucessToast(message) {
-    toast.success(message);
-  }
-
-  function handleOpenErrorToast(message) {
-    toast.error(message);
-  }
-
   function handleLogout() {
     localStorage.removeItem("user");
     navigate(WEBSITE_PATHS.LOGIN);
@@ -63,8 +54,6 @@ export function Header() {
         isOpen={isPostModalOpen}
         handleClose={handleClosePostModal}
         user={globalUser}
-        sucessToast={handleOpenSucessToast}
-        errorToast={handleOpenErrorToast}
       />
 
       <div className="header__content">

@@ -1,18 +1,13 @@
 import "./PostModal.css";
 
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 import { usePost } from "../../hooks";
 
 import { ADD_POST_SUCCESS, ADD_POST_ERROR } from "../../constants";
 
-export function PostModal({
-  isOpen,
-  handleClose,
-  user,
-  sucessToast,
-  errorToast,
-}) {
+export function PostModal({ isOpen, handleClose, user }) {
   const [post, setPost] = useState({});
 
   const { addPost } = usePost();
@@ -30,10 +25,10 @@ export function PostModal({
       };
 
       await addPost(params);
-      sucessToast(ADD_POST_SUCCESS);
+      toast.success(ADD_POST_SUCCESS);
       handleClose();
     } catch (e) {
-      errorToast(ADD_POST_ERROR);
+      toast.error(ADD_POST_ERROR);
       handleClose();
     }
   }
