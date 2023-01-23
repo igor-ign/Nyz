@@ -11,11 +11,7 @@ import { useUser } from "../../hooks/api/useUser.hook";
 
 import { useGlobalUser } from "../../context";
 
-import {
-  REGISTER_ERROR,
-  WEBSITE_PATHS,
-  TOAST_DEFAULT_DURATION,
-} from "../../constants";
+import { REGISTER_ERROR, WEBSITE_PATHS } from "../../constants";
 
 export function Register() {
   const [, setGlobalUser] = useGlobalUser();

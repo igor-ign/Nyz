@@ -13,7 +13,6 @@ import { usePost } from "../../hooks";
 
 import {
   POSTS_LOAD_ERROR,
-  TOAST_DEFAULT_DURATION,
   WEBSITE_PATHS,
   POST_DELETE_ERROR,
   POST_DELETE_SUCCESS,

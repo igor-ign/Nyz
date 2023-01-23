@@ -9,11 +9,7 @@ import { PostModal } from "../PostModal/PostModal";
 
 import { useGlobalUser } from "../../context";
 
-import {
-  MENU_STATES,
-  WEBSITE_PATHS,
-  TOAST_DEFAULT_DURATION,
-} from "../../constants";
+import { MENU_STATES, WEBSITE_PATHS } from "../../constants";
 
 import NYZ_LOGO from "../../assets/nyz__logo.svg";
 import HAMBURGER from "../../assets/hamburger__icon.svg";

@@ -10,7 +10,6 @@ import DEFAULT from "../../assets/default__profile__picture.svg";
 
 import {
   BUTTON_TYPE,
-  TOAST_DEFAULT_DURATION,
   USER_FOLLOW_SUCCESS,
   USER_FOLLOW_ERROR,
   USER_UNFOLLOW_SUCCESS,

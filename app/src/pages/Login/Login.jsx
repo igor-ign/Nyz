@@ -12,11 +12,7 @@ import { useUser } from "../../hooks/api/useUser.hook";
 
 import { useGlobalUser } from "../../context";
 
-import {
-  LOGIN_ERROR,
-  WEBSITE_PATHS,
-  TOAST_DEFAULT_DURATION,
-} from "../../constants";
+import { LOGIN_ERROR, WEBSITE_PATHS } from "../../constants";
 
 export function Login() {
   const [, setGlobalUser] = useGlobalUser();

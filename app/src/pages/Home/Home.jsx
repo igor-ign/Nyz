@@ -11,11 +11,7 @@ import { usePost } from "../../hooks";
 
 import { useGlobalUser } from "../../context";
 
-import {
-  POSTS_LOAD_ERROR,
-  TOAST_DEFAULT_DURATION,
-  WEBSITE_PATHS,
-} from "../../constants";
+import { POSTS_LOAD_ERROR, WEBSITE_PATHS } from "../../constants";
 
 export function Home() {
   const [page, setPage] = useState(0);
