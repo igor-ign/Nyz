@@ -69,7 +69,7 @@ export function Login() {
         <button className="form__button">Login</button>
         <p className="redirect">
           Don't have an account?
-          <Link to={"/register"}>Register</Link>
+          <Link to={WEBSITE_PATHS.REGISTER}>Register</Link>
         </p>
       </form>
     </div>
