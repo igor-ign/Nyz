@@ -26,9 +26,6 @@ export function Profile() {
   const [page, setPage] = useState(0);
   const [totalPages, setTotalPages] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isPreviousPageButtonBlocked, setIsPreviousPageButtonBlocked] =
-    useState(false);
-  const [isNextPageButtonBlocked, setIsNextPageButtonBlocked] = useState(false);
 
   const [globalUser] = useGlobalUser();
 
@@ -125,15 +122,7 @@ export function Profile() {
         </ul>
 
         <footer className="footer">
-          <Pagination
-            page={page}
-            totalPages={totalPages}
-            isPreviousPageButtonBlocked={isPreviousPageButtonBlocked}
-            isNextPageButtonBlocked={isNextPageButtonBlocked}
-            setIsNextPageButtonBlocked={setIsNextPageButtonBlocked}
-            setIsPreviousPageButtonBlocked={setIsPreviousPageButtonBlocked}
-            setPage={setPage}
-          />
+          <Pagination page={page} totalPages={totalPages} setPage={setPage} />
         </footer>
       </div>
     </div>

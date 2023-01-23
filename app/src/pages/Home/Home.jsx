@@ -17,9 +17,6 @@ export function Home() {
   const [page, setPage] = useState(0);
   const [totalPages, setTotalPages] = useState();
   const [posts, setPosts] = useState([]);
-  const [isPreviousPageButtonBlocked, setIsPreviousPageButtonBlocked] =
-    useState(true);
-  const [isNextPageButtonBlocked, setIsNextPageButtonBlocked] = useState(false);
   const [globalUser] = useGlobalUser();
 
   const { getPosts } = usePost();
@@ -55,15 +52,7 @@ export function Home() {
       </main>
 
       <footer className="footer">
-        <Pagination
-          page={page}
-          totalPages={totalPages}
-          isPreviousPageButtonBlocked={isPreviousPageButtonBlocked}
-          isNextPageButtonBlocked={isNextPageButtonBlocked}
-          setIsNextPageButtonBlocked={setIsNextPageButtonBlocked}
-          setIsPreviousPageButtonBlocked={setIsPreviousPageButtonBlocked}
-          setPage={setPage}
-        />
+        <Pagination page={page} totalPages={totalPages} setPage={setPage} />
       </footer>
     </div>
   );

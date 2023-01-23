@@ -1,16 +1,12 @@
 import "./Pagination.css";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-export function Pagination({
-  page,
-  totalPages,
-  isPreviousPageButtonBlocked,
-  isNextPageButtonBlocked,
-  setIsNextPageButtonBlocked,
-  setIsPreviousPageButtonBlocked,
-  setPage,
-}) {
+export function Pagination({ page, totalPages, setPage }) {
+  const [isPreviousPageButtonBlocked, setIsPreviousPageButtonBlocked] =
+    useState(true);
+  const [isNextPageButtonBlocked, setIsNextPageButtonBlocked] = useState(false);
+
   useEffect(() => {
     handleBlockButtons();
   }, [, page]);
