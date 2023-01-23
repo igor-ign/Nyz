@@ -54,7 +54,7 @@ export function Header() {
   function handleNavigate(e) {
     const { id } = e.target;
 
-    navigate(`${WEBSITE_PATHS[id]}`);
+    navigate(WEBSITE_PATHS[id]);
   }
 
   return (
