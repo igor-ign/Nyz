@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { usePost } from "../../hooks";
 
-import { ADD_POST } from "../../constants";
+import { ADD_POST_SUCCESS, ADD_POST_ERROR } from "../../constants";
 
 export function PostModal({
   isOpen,
@@ -30,10 +30,10 @@ export function PostModal({
       };
 
       await addPost(params);
-      sucessToast(ADD_POST.SUCCESS);
+      sucessToast(ADD_POST_SUCCESS);
       handleClose();
     } catch (e) {
-      errorToast(ADD_POST.ERROR);
+      errorToast(ADD_POST_ERROR);
       handleClose();
     }
   }

@@ -2,7 +2,8 @@ export { API_PATH } from "./apiPath";
 export { WEBSITE_PATHS } from "./websitePaths"
 export { MENU_STATES } from "./menuStates"
 export { USER_KEY } from "./userKey"
-export { ADD_POST, 
+export { ADD_POST_SUCCESS,
+    ADD_POST_ERROR, 
     LOGIN_ERROR, 
     REGISTER_ERROR, 
     SEARCH_ERROR, 
