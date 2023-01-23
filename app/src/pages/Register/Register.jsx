@@ -3,7 +3,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 import { FormInput } from "../../components";
 
@@ -47,7 +47,6 @@ export function Register() {
 
   return (
     <div className="register__container">
-      <ToastContainer autoClose={TOAST_DEFAULT_DURATION} />
       <form className="register__form" onSubmit={handleRegister}>
         <h1 className="form__title">Sign up</h1>
 

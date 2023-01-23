@@ -1,6 +1,6 @@
 import "./ProfileLoader.css";
 
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 import { useFollow } from "../../hooks";
 
@@ -62,7 +62,6 @@ export function ProfileLoader({ profiles, setProfiles }) {
 
   return (
     <ul className="profiles" type="none">
-      <ToastContainer autoClose={TOAST_DEFAULT_DURATION} />
       {profiles.map((profile) => {
         return (
           <li className="profile" key={profile.id}>

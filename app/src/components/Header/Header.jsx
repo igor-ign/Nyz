@@ -2,7 +2,7 @@ import "./Header.css";
 import "react-toastify/dist/ReactToastify.css";
 
 import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 import { PostModal } from "../PostModal/PostModal";
@@ -63,7 +63,6 @@ export function Header() {
 
   return (
     <div className="header__container">
-      <ToastContainer autoClose={TOAST_DEFAULT_DURATION} />
       <PostModal
         isOpen={isPostModalOpen}
         handleClose={handleClosePostModal}

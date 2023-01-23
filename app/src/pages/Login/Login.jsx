@@ -2,7 +2,7 @@ import "./Login.css";
 import "react-toastify/dist/ReactToastify.css";
 
 import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 import { Link, useNavigate } from "react-router-dom";
 
@@ -49,7 +49,6 @@ export function Login() {
 
   return (
     <div className="login__container">
-      <ToastContainer autoClose={TOAST_DEFAULT_DURATION} />
       <form className="login__form" onSubmit={handleLogin}>
         <h1 className="form__title">Sign in</h1>
 

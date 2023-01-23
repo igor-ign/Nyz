@@ -2,7 +2,7 @@ import "./Search.css";
 import "react-toastify/dist/ReactToastify.css";
 
 import { useEffect, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 import SEARCH from "../../assets/search__icon.svg";
@@ -66,7 +66,6 @@ export function Search() {
 
   return (
     <div className="search__container">
-      <ToastContainer autoClose={TOAST_DEFAULT_DURATION} />
       <Header />
 
       <div className="search__content">
