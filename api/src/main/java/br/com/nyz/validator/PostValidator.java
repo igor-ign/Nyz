@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.Optional;
-
 import static java.util.Objects.isNull;
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 
@@ -16,8 +14,10 @@ import static org.springframework.http.HttpStatus.BAD_REQUEST;
 public class PostValidator {
     private static final String INVALID_USER_ID_MESSAGE = "This user doesn't exist in our database";
     private static final String INVALID_AUTHOR_NAME_MESSAGE = "Author name didn't match with Id";
-
-    // Todo : add post title and description min/max length
+    private static final String BIG_POST_TITLE_LENGTH = "The post title max length is 45 words.";
+    private static final String BIG_POST_DESCRIPTION_LENGTH = "The post description max length is 100 words.";
+    private static final int POST_TITLE_MAX_LENGTH = 45;
+    private static final int POST_DESCRIPTION_MAX_LENGTH = 100;
 
     @Autowired
     private UserRepository userRepository;
@@ -34,6 +34,14 @@ public class PostValidator {
 
         if (!isUserValid.getName().contains(authorName)) {
             throw new ResponseStatusException(BAD_REQUEST, INVALID_AUTHOR_NAME_MESSAGE);
+        }
+
+        if (newPost.getTitle().length() > POST_TITLE_MAX_LENGTH) {
+            throw new ResponseStatusException(BAD_REQUEST, BIG_POST_TITLE_LENGTH);
+        }
+
+        if (newPost.getDescription().length() > POST_DESCRIPTION_MAX_LENGTH) {
+            throw new ResponseStatusException(BAD_REQUEST, BIG_POST_DESCRIPTION_LENGTH);
         }
     }
 }

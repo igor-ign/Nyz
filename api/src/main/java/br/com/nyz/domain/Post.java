@@ -39,6 +39,4 @@ public class Post {
 
     @Column(nullable = false)
     private String postContent;
-
-    // TODO : Add post date
 }
