@@ -2,7 +2,7 @@ import "./FeedLoader.css";
 
 import { useState } from "react";
 
-import { ReadMoreModal } from "../ReadMoreModal/ReadMoreModal";
+import { ReadMoreModal } from "../../components";
 
 export function FeedLoader({ posts }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
