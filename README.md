@@ -33,6 +33,10 @@ You can delete your post as well if you feel the need! Just click in "Profile" i
 
 ![Profile](https://github.com/igor-ign/nyz/blob/main/nyz/readme_images/Profile.jpg)
 
+And it's possible to read your own posts!
+
+![Profile](https://github.com/igor-ign/nyz/blob/main/nyz/readme_images/Profile2.jpg)
+
 By the end of your journey inside Nyz, you can logout by clicking in "Logout" inside the page header.
 
 ![Logout](https://github.com/igor-ign/nyz/blob/main/nyz/readme_images/Logout.jpg)
